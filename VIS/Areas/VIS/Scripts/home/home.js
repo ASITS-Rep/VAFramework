@@ -1544,7 +1544,7 @@
                     $WelcomeScreenHdr.append(VIS.Msg.getMsg('Activity'));
                     //var divActivityContainer = $("#welcomeScreenFeedsList");
                     //var divActivityDetailContainer = $("#workflowActivityDetails");
-                    emptyWelcomeTabDatacontainers();;
+                    //emptyWelcomeTabDatacontainers();;
                     tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
                     activity = new VIS.wfActivity(WelcomeTabDatacontainers, $workflowActivityDetails, workflowActivityData, WelcomeTabDatacontainers, $wfSearchShow);
                     activity.Load(false);

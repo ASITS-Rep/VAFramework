@@ -59,6 +59,7 @@
                      <div class="text-center vis-change-picture-wrap">
                         <label for="vis-file-input"  class="vis-file-label">
                             <span class="vis-change-picture-ico vis vis-pencil"></span>@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ChangePicture")
+                            <p>Ibrahim Edited</p>
                         </label>
                         <input id="vis-file-input" title=" " class="vis-change-pic-input" type="file" accept="image/*" />
                     </div>
@@ -111,36 +112,45 @@
                 <!-- Welcome Screen Tab Menu START -->
                 <ul id="ulHomeTabMenu" class="vis-welcomeScreenTabMenu">
                     <li class="vis-activeTab">
-                        <div title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "User profile")"  class="vis-welcomeScreenTab-notificationBubbles vis-blank"></div>
+                        <div title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "User profile")" class="vis-welcomeScreenTab-notificationBubbles vis-blank"></div>
                         <a data-vishome="userprofile" href="javascript:void(0)"><i class="vis vis-userprofile"></i></a>
                     </li>
                     <li>
-                        <div id="divfActivity"  title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "workflow")" class="vis-welcomeScreenTab-notificationBubbles vis-feedsAlert"  @GetStatus(Model.WorkFlowCnt)>@Model.WorkFlowCnt</div>
-                        <a data-vishome="workflow"  href="javascript:void(0)"title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "workflow")"><i class="vis vis-userfeed"></i></a></li>
+                        <div id="divfActivity" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "workflow")" class="vis-welcomeScreenTab-notificationBubbles vis-feedsAlert" @GetStatus(Model.WorkFlowCnt)>@Model.WorkFlowCnt</div>
+                        <a data-vishome="workflow" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "workflow")"><i class="vis vis-userfeed"></i></a>
+                    </li>
                     <li>
                         <div id="divNoticeCount" class="vis-welcomeScreenTab-notificationBubbles vis-alertAlert" @GetStatus(Model.NoticeCnt)>@Model.NoticeCnt</div>
-                        <a data-vishome="notice" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Notice")"  href="javascript:void(0)"><i class="vis vis-notice"></i></a></li>
+                        <a data-vishome="notice" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Notice")" href="javascript:void(0)"><i class="vis vis-notice"></i></a>
+                    </li>
                     <li>
-                        <div id="divRequestCount"   title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Request")"  class="vis-welcomeScreenTab-notificationBubbles vis-calendarAlert"  @GetStatus(Model.RequestCnt)>@Model.RequestCnt</div>
-                        <a  data-vishome="request" href="javascript:void(0)"  title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Request")"><i class="fa fa-bell-o"></i></a></li>
+                        <div id="divRequestCount" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Request")" class="vis-welcomeScreenTab-notificationBubbles vis-calendarAlert" @GetStatus(Model.RequestCnt)>@Model.RequestCnt</div>
+                        <a data-vishome="request" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Request")"><i class="fa fa-bell-o"></i></a>
+                    </li>
                     <li>
-                        <div id="divAptCount" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Appointments")"   class="vis-welcomeScreenTab-notificationBubbles vis-todoAlert"  @GetStatus(Model.AppointmentCnt) >@Model.AppointmentCnt</div>
-                        <a  data-vishome="appointments" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Appointments")"  href="javascript:void(0)"><i class="vis vis-appointment"></i></a></li>
+                        <div id="divAptCount" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Appointments")" class="vis-welcomeScreenTab-notificationBubbles vis-todoAlert" @GetStatus(Model.AppointmentCnt)>@Model.AppointmentCnt</div>
+                        <a data-vishome="appointments" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Appointments")" href="javascript:void(0)"><i class="vis vis-appointment"></i></a>
+                    </li>
                     <li>
                         <div id="divMyTaskCount" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "MyTask")" class="vis-welcomeScreenTab-notificationBubbles vis-favouritesAlert" @GetStatus(Model.MyTaskCnt)>@Model.MyTaskCnt</div>
-                        <a  data-vishome="mytask" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "MyTask")"><i class="vis vis-mytasks"></i></a></li>
+                        <a data-vishome="mytask" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "MyTask")"><i class="vis vis-mytasks"></i></a>
+                    </li>
                     <li>
                         <div id="divTaskAssignBymeCount" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "TaskAssignByMe")" class="vis-welcomeScreenTab-notificationBubbles vis-linksAlert" @GetStatus(Model.TaskAssignByMeCnt)>@Model.TaskAssignByMeCnt</div>
-                        <a data-vishome="taskassignbyme" href="javascript:void(0)"title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "TaskAssignByMe")"><i class="vis vis-taskassigned"></i></a></li>
+                        <a data-vishome="taskassignbyme" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "TaskAssignByMe")"><i class="vis vis-taskassigned"></i></a>
+                    </li>
                     <li>
-                        <div id="divNotesCount"  title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Notes")"  class="vis-welcomeScreenTab-notificationBubbles vis-contactsAlert" @GetStatus(Model.NotesCnt)>@Model.NotesCnt</div>
-                        <a  data-vishome="notes" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Notes")" href="javascript:void(0)"><i class="vis vis-contacts"></i></a></li>
+                        <div id="divNotesCount" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Notes")" class="vis-welcomeScreenTab-notificationBubbles vis-contactsAlert" @GetStatus(Model.NotesCnt)>@Model.NotesCnt</div>
+                        <a data-vishome="notes" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Notes")" href="javascript:void(0)"><i class="vis vis-contacts"></i></a>
+                    </li>
                     <li>
-                        <div id="divKPI"  title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "KPI")" class="vis-welcomeScreenTab-notificationBubbles vis-notesAlert"  @GetStatus(Model.KPICnt)>@Model.KPICnt</div>
-                        <a data-vishome="KPI"  title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "KPI")"  href="javascript:void(0)"><i class="vis vis-kpi"></i></a></li>
+                        <div id="divKPI" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "KPI")" class="vis-welcomeScreenTab-notificationBubbles vis-notesAlert" @GetStatus(Model.KPICnt)>@Model.KPICnt</div>
+                        <a data-vishome="KPI" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "KPI")" href="javascript:void(0)"><i class="vis vis-kpi"></i></a>
+                    </li>
                     <li>
-                        <div id="divDocReceveCnt" @VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "document count") class="vis-welcomeScreenTab-notificationBubbles vis-blank"  @GetStatus(0)>0</div>
-                        <a data-vishome="documentrecive"   href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "documents")"><i class="vis vis-document"></i></a></li>
+                        <div id="divDocReceveCnt" @VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "document count") class="vis-welcomeScreenTab-notificationBubbles vis-blank" @GetStatus(0)>0</div>
+                        <a data-vishome="documentrecive" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "documents")"><i class="vis vis-document"></i></a>
+                    </li>
                 </ul>
                 <!-- Welcome Screen Tab Menu END -->
                 <div class="clearfix"></div>

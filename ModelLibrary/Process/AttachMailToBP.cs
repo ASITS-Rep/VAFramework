@@ -218,7 +218,7 @@ namespace VAdvantage.Process
                             MMailAttachment1 mAttachment = new MMailAttachment1(GetCtx(), 0, null);
 
                             IMail message;
-                            String eml = imapMail.GetMessageByUID(uid);
+                            String eml = Util.GetValueOfString(imapMail.GetMessageByUID(uid));
                             message = new MailBuilder().CreateFromEml(eml);
                             string textmsg = message.Html;
                             bool isAttachment = false;
@@ -360,7 +360,7 @@ namespace VAdvantage.Process
                                     }
                                     MMailAttachment1 mAttachment = new MMailAttachment1(GetCtx(), 0, null);
                                     IMail message;
-                                    String eml = imapMail.GetMessageByUID(uid);
+                                    String eml = Util.GetValueOfString(imapMail.GetMessageByUID(uid));
                                     message = new MailBuilder().CreateFromEml(eml);
 
                                     string textmsg = message.Html;

@@ -23,6 +23,7 @@ using System.Data;
 using VAdvantage.Logging;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Formatting;
 using System.Reflection;
 
 namespace VAdvantage.Model
@@ -864,7 +865,7 @@ namespace VAdvantage.Model
                 object objNDBNo = DB.ExecuteScalar("select va019_ndbno from M_Product where m_product_ID=" + GetM_Product_ID() + "");
                 if (objNDBNo != null && objNDBNo != DBNull.Value)
                 {
-                    CallNutritionApi(Convert.ToString(objNDBNo), GetM_Product_ID());
+                    //CallNutritionApi(Convert.ToString(objNDBNo), GetM_Product_ID());
                 }
             }
             return success;
@@ -953,43 +954,43 @@ namespace VAdvantage.Model
             public decimal value { get; set; }
         }
         #endregion
-        public void CallNutritionApi(string NDBNo, int ProductID)
-        {
-            try
-            {
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("http://api.nal.usda.gov/ndb/reports/?format=json&type=b&api_key=HBS3lRZUgBIxXOSF1DQBKW7GJw6M6e2J4cFMzSSP&ndbno=" + NDBNo + "");
-                client.DefaultRequestHeaders.Accept.Add(
-               new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    var dataObject = response.Content.ReadAsAsync<rootObject>().Result;
-                    foreach (nutrients nutrient in dataObject.report.food.nutrients)
-                    {
-                        int TblPrimaryKey = 0;
-                        object objNT = DB.ExecuteScalar("select va019_nutrition_id from va019_nutrition where m_product_id=" + ProductID + " and va019_nutrition_key=" + nutrient.nutrient_id + "");
-                        if (objNT != null && objNT != DBNull.Value)
-                        {
-                            TblPrimaryKey = Convert.ToInt32(objNT);
-                        }
-                        var Dll = Assembly.Load("VA019Svc");
-                        var X_VA019_Nutrition = Dll.GetType("ViennaAdvantage.Model.MVA019Nutrition");
-                        ConstructorInfo conInfo = X_VA019_Nutrition.GetConstructor(new[] { typeof(Ctx), typeof(int), typeof(Trx), typeof(int), typeof(string), typeof(int), typeof(string), typeof(decimal) });
-                        conInfo.Invoke(new object[] { p_ctx, TblPrimaryKey, null, ProductID, nutrient.name, nutrient.nutrient_id, nutrient.unit, nutrient.value });
-                    }
+        //public void CallNutritionApi(string NDBNo, int ProductID)
+        //{
+        //    try
+        //    {
+        //        HttpClient client = new HttpClient();
+        //        client.BaseAddress = new Uri("http://api.nal.usda.gov/ndb/reports/?format=json&type=b&api_key=HBS3lRZUgBIxXOSF1DQBKW7GJw6M6e2J4cFMzSSP&ndbno=" + NDBNo + "");
+        //        client.DefaultRequestHeaders.Accept.Add(
+        //       new MediaTypeWithQualityHeaderValue("application/json"));
+        //        HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            var dataObject = response.Content.ReadAsAsync<rootObject>().Result;
+        //            foreach (nutrients nutrient in dataObject.report.food.nutriets)
+        //            {
+        //                int TblPrimaryKey = 0;
+        //                object objNT = DB.ExecuteScalar("select va019_nutrition_id from va019_nutrition where m_product_id=" + ProductID + " and va019_nutrition_key=" + nutrient.nutrient_id + "");
+        //                if (objNT != null && objNT != DBNull.Value)
+        //                {
+        //                    TblPrimaryKey = Convert.ToInt32(objNT);
+        //                }
+        //                var Dll = Assembly.Load("VA019Svc");
+        //                var X_VA019_Nutrition = Dll.GetType("ViennaAdvantage.Model.MVA019Nutrition");
+        //                ConstructorInfo conInfo = X_VA019_Nutrition.GetConstructor(new[] { typeof(Ctx), typeof(int), typeof(Trx), typeof(int), typeof(string), typeof(int), typeof(string), typeof(decimal) });
+        //                conInfo.Invoke(new object[] { p_ctx, TblPrimaryKey, null, ProductID, nutrient.name, nutrient.nutrient_id, nutrient.unit, nutrient.value });
+        //            }
 
-                }
-                else
-                {
-                    log.SaveError("Nutretion API Response Falier", "");
-                }
-            }
-            catch (Exception e)
-            {
-                log.SaveError("Nutretion API Error", e);
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            log.SaveError("Nutretion API Response Falier", "");
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        log.SaveError("Nutretion API Error", e);
+        //    }
+        //}
 
     }
 }
