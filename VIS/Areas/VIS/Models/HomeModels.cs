@@ -23,6 +23,7 @@ namespace VIS.Models
         public int RequestCnt { get; set; }
         public int NoticeCnt { get; set; }
         public int WorkFlowCnt { get; set; }
+        public int ClinicSessionsCnt { get; set; }
 
         public int TaskAssignByMeCnt { get; set; }
         public int MyTaskCnt { get; set; }
@@ -136,6 +137,20 @@ namespace VIS.Models
         public int ProcessWindowID { get; set; }
     }
 
+    #endregion
+
+    #region
+    public class HomeClinicSessions
+    { 
+        public int ASI03_Session_ID { get; set; }
+        public int ASI03_Department_ID { get; set; }
+        public int ASI03_Patient_ID { get; set; }
+        public string PatientName { get; set; }
+        public string DepartmentName { get; set; }
+        public DateTime ASI03_Startdate { get; set; }
+        public DateTime ASI03_EndDate { get; set; }
+
+    }
     #endregion
 
     #region Request

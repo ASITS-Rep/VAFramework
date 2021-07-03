@@ -16,6 +16,7 @@
         var isWsp = null;
         var $divTabContainerLoder = null;
         var $workflowActivityDetails = null;
+        var $clinicSessionsActivity = null;
         var $WelcomeScreenHdr = null;
         var activity = null;
         var isTabAjaxBusy = null;
@@ -40,7 +41,7 @@
         //set Follups Enter Key Code
         var EnterKeyCode = 13;
         //1=Profile,2=Request,3=Workflow,4=Appointments,5=MyTask,6=Task Assign By Me,7=Document receave,8=Notice,9=Notes,10=KPI
-        var ProfileType = 1, RequestType = 2, WorkflowType = 3, AppointmentsType = 4, MyTaskType = 5, TaskAssignByme = 6, DocumentReceaveType = 7, NoticeType = 8, NotesType = 9, kPIType = 10;
+        var ProfileType = 1, RequestType = 2, WorkflowType = 3, AppointmentsType = 4, MyTaskType = 5, TaskAssignByme = 6, DocumentReceaveType = 7, NoticeType = 8, NotesType = 9, kPIType = 10, ClinicSessionsType = 11;
         //PageNo start from 1 for scroll event
         //Page Size start from 10 for Scroll event
         var p_size = 10, p_no = 1;
@@ -49,6 +50,7 @@
         //declare Vis newrecord  variable
         var $welcomeNewRecord = null;
         var $wfSearchShow = null;
+        var $sessionsSearchShow = null;
 
         var baseUrl = VIS.Application.contextUrl;
         var dataSetUrl = baseUrl + "JsonData/JDataSetWithCode";
@@ -398,9 +400,11 @@
                 $workflowActivity = $('#workflowActivity');
                 $divTabContainerLoder = $("#divTabMenuDataLoder");
                 $workflowActivityDetails = $("#workflowActivityDetails");
+                $clinicSessionsActivity = $("#clinicSessionsActivity");
                 $WelcomeScreenHdr = $("#hWelcomeScreenSwapHdr");
                 $welcomeNewRecord = $("#sNewNts");
                 $wfSearchShow = $('#WFSearchshow');
+                $sessionsSearchShow = $('#SessionsSearchShow')
                 /*end  initialize div object */
 
 
@@ -413,6 +417,7 @@
                 $divNotesCount = $("#divNotesCount");
                 $divAptCount = $("#divAptCount");
                 $divKPICount = $('#divKPI');
+                $divClinicSessionsCount = $("#divClinicSessionsCount");
                 /*Start Pagging initialize */
                 tabdataPageSize = 10, tabdataPage = 0, tabdataLastPage = 0, tabdatacntpage = 0;
                 /*End Pagging initialize */
@@ -538,7 +543,29 @@
                                 activity = new VIS.wfActivity(WelcomeTabDatacontainers, $workflowActivityDetails, workflowActivityData, WelcomeTabDatacontainers, $wfSearchShow);
                             }
                             activity.Load(true);
+                        }
+                        else if (activeTabType == ClinicSessionsType) {
 
+                            //   $workflowActivity.hide();
+                            adjustDivSize();
+                            $welcomeNewRecord.hide();
+                            $wfSearchShow.hide();
+                            $sessionsSearchShow.show();
+                            $sAlrtTxtType.empty();
+                            $sAlrtTxtType.append(VIS.Msg.getMsg('SessionsRecords'));
+                            $hAlrtTxtTypeCount.empty();
+                            $hAlrtTxtTypeCount.append($("#divfActivity").html());
+                            $WelcomeScreenHdr.empty();
+                            $WelcomeScreenHdr.append(VIS.Msg.getMsg('Activity'));
+                            //var divActivityContainer = $("#welcomeScreenFeedsList");
+                            //var divActivityDetailContainer = $("#workflowActivityDetails");
+                            // emptyWelcomeTabDatacontainers();;
+                            tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
+
+                            if (activity == null) {
+                                activity = new VIS.clinicSessions(WelcomeTabDatacontainers, $workflowActivityDetails, workflowActivityData, WelcomeTabDatacontainers, $sessionsSearchShow);
+                            }
+                            activity.Load(true);
                         }
                         else if (activeTabType == NoticeType) {
                             tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
@@ -1816,6 +1843,38 @@
                         $workflowActivity.hide();
                         adjustDivSize();
                     }
+                    else if (datatab === "sessions") {
+                        $spanWelcomeTabtopHdr.show();
+                        $ulHomeTabMenu.off("click");
+                        WelcomeTabDatacontainers.css("overflow-y", "auto");
+                        WelcomeTabDatacontainers.css({ "text-align": "auto" });
+                        activeTabType = ClinicSessionsType;
+                        isTabscroll = false;
+                        isTabDataRef = true;
+
+                        $hlnkRefTabData.css("margin-right", "17px");
+                        $spanWelcomeTabtopHdr.removeClass().addClass("vis-welcomeScreenContentTittle-icon vis vis-userfeed");//  .css("background-position", "0px -76px");
+                        $('.vis-welcomeScreenTab-notificationBubbles').removeClass('vis-feedsAlert').addClass('blank');
+                        $('.vis-welcomeScreen-Data').hide('slow');
+                        $('.vis-welcomeScreenFeeds').fadeIn('fast');
+                        $workflowActivity.hide();
+                        adjustDivSize();
+                        $welcomeNewRecord.hide();
+                        $wfSearchShow.show();
+                        $sAlrtTxtType.empty();
+                        $sAlrtTxtType.append(VIS.Msg.getMsg('SessionsRecords'));
+                        $hAlrtTxtTypeCount.empty();
+                        $hAlrtTxtTypeCount.append($("#divfActivity").html());
+                        $WelcomeScreenHdr.empty();
+                        $WelcomeScreenHdr.append(VIS.Msg.getMsg('Activity'));
+                        //var divActivityContainer = $("#welcomeScreenFeedsList");
+                        //var divActivityDetailContainer = $("#workflowActivityDetails");
+                        //emptyWelcomeTabDatacontainers();;
+                        tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
+                        activity = new VIS.clinicSessions(WelcomeTabDatacontainers, $workflowActivityDetails, workflowActivityData, WelcomeTabDatacontainers, $wfSearchShow);
+                        activity.Load(false);
+
+                    }
                     else {
                         $hlnkRefTabData.hide();
                         //$spanWelcomeTabtopHdr.hide();
@@ -1829,6 +1888,7 @@
                         }
                     }
                 }
+
                 // evnt.stopPropagation();
             });
         }

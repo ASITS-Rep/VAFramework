@@ -120,6 +120,10 @@
                         <a data-vishome="workflow" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "workflow")"><i class="vis vis-userfeed"></i></a>
                     </li>
                     <li>
+                        <div id="divfActivity" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "sessions")" class="vis-welcomeScreenTab-notificationBubbles vis-feedsAlert" @GetStatus(Model.ClinicSessionsCnt)>@Model.ClinicSessionsCnt</div>
+                        <a data-vishome="sessions" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "sessions")"><i class="vis vis-userfeed"></i></a>
+                    </li>
+                    <li>
                         <div id="divNoticeCount" class="vis-welcomeScreenTab-notificationBubbles vis-alertAlert" @GetStatus(Model.NoticeCnt)>@Model.NoticeCnt</div>
                         <a data-vishome="notice" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Notice")" href="javascript:void(0)"><i class="vis vis-notice"></i></a>
                     </li>

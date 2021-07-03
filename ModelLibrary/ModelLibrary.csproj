@@ -184,6 +184,12 @@
     <Compile Include="Classes\VTreeNode.cs" />
     <Compile Include="Classes\WindowCtx.cs" />
     <Compile Include="Classes\ZoomTarget.cs" />
+    <Compile Include="Clinic\MASI03Department.cs" />
+    <Compile Include="Clinic\MASI03Patient.cs" />
+    <Compile Include="Clinic\MASI03Session.cs" />
+    <Compile Include="Clinic\X_ASI03_Department.cs" />
+    <Compile Include="Clinic\X_ASI03_Patient.cs" />
+    <Compile Include="Clinic\X_ASI03_Session.cs" />
     <Compile Include="CM\CacheClearAll.cs" />
     <Compile Include="CM\CacheClearServer.cs" />
     <Compile Include="CM\CacheHandler.cs" />

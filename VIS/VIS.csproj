@@ -800,6 +800,7 @@
     <Compile Include="Areas\VIS\Controllers\CallOut\MWarehouseController.cs" />
     <Compile Include="Areas\VIS\Controllers\CardViewController.cs" />
     <Compile Include="Areas\VIS\Controllers\Chat\ChatController.cs" />
+    <Compile Include="Areas\VIS\Controllers\ClinicSessionsController.cs" />
     <Compile Include="Areas\VIS\Controllers\CommonController.cs" />
     <Compile Include="Areas\VIS\Controllers\DocActionController.cs" />
     <Compile Include="Areas\VIS\Controllers\EmailController.cs" />
@@ -855,10 +856,12 @@
     <Compile Include="Areas\VIS\DataContracts\SqlParams.cs" />
     <Compile Include="Areas\VIS\DataContracts\ThemeData.cs" />
     <Compile Include="Areas\VIS\DataContracts\WindowData.cs" />
+    <Compile Include="Areas\VIS\DBase.cs" />
     <Compile Include="Areas\VIS\DBase\DB.cs" />
     <Compile Include="Areas\VIS\Filters\AjaxAuthorizeAttribute.cs" />
     <Compile Include="Areas\VIS\Filters\AjaxSessionFilterAttribute.cs" />
     <Compile Include="Areas\VIS\Filters\AjaxValidateAntiForgeryTokenAttribute.cs" />
+    <Compile Include="Areas\VIS\Helpers\ClinicHelper.cs" />
     <Compile Include="Areas\VIS\Helpers\ContextHelper.cs" />
     <Compile Include="Areas\VIS\Helpers\FormHelper.cs" />
     <Compile Include="Areas\VIS\Helpers\HomeHelper.cs" />
@@ -1013,6 +1016,7 @@
   <ItemGroup>
     <Folder Include="Areas\VIS\Scripts\app\processengine\" />
     <Folder Include="Areas\VIS\Views\AmountDivision\" />
+    <Folder Include="Areas\VIS\Views\ClinicSessions\" />
     <Folder Include="Areas\VIS\Views\GenerateXModel\" />
     <Folder Include="Areas\VIS\Views\GmailContacts\" />
     <Folder Include="Areas\VIS\Views\Group\" />
