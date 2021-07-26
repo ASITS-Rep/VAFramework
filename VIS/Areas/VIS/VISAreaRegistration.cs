@@ -34,7 +34,6 @@ namespace VIS
             ScriptBundle modScript_v2 = new ScriptBundle("~/Areas/VIS/Scripts/VIS_v2");
 
 
-
             modScript.Include(
                  "~/Areas/VIS/Scripts/app/native-extension.js",
                 "~/Areas/VIS/Scripts/app/utility.js",
@@ -158,7 +157,7 @@ namespace VIS
                  "~/Areas/VIS/Scripts/app/forms/vcreaterelatedlines.js",
                  "~/Areas/VIS/Scripts/app/forms/createforecast.js",
 
-
+                 "~/Areas/VIS/Scripts/app/Forms/CustomerFormJs.js",
                    "~/Areas/VIS/Scripts/tabpanels/verinfo.js",
                   "~/Areas/VIS/Scripts/TestPanel.js");
 

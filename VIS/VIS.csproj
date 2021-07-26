@@ -102,6 +102,9 @@
       <HintPath>..\ViennaAdvantageWeb\Dll\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ModelLibrary">
+      <HintPath>..\ViennaAdvantageWeb\Dll\ModelLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -706,6 +709,7 @@
     <Content Include="Areas\VIS\Scripts\app\viewmanager.js" />
     <Content Include="Areas\VIS\Scripts\app\windowformcontainer.js" />
     <Content Include="Areas\VIS\Scripts\app\windowframe.js" />
+    <Content Include="Areas\VIS\Scripts\app\forms\CustomerFormJs.js" />
     <Content Include="Areas\VIS\Scripts\F20\acontentpane.js" />
     <Content Include="Areas\VIS\Scripts\F20\afiltercontrols.js" />
     <Content Include="Areas\VIS\Scripts\F20\afilterpanel.js" />
@@ -800,6 +804,7 @@
     <Compile Include="Areas\VIS\Controllers\CallOut\MWarehouseController.cs" />
     <Compile Include="Areas\VIS\Controllers\CardViewController.cs" />
     <Compile Include="Areas\VIS\Controllers\Chat\ChatController.cs" />
+    <Compile Include="Areas\VIS\Controllers\CustomerFormController.cs" />
     <Compile Include="Areas\VIS\Controllers\CommonController.cs" />
     <Compile Include="Areas\VIS\Controllers\DocActionController.cs" />
     <Compile Include="Areas\VIS\Controllers\EmailController.cs" />
@@ -830,6 +835,7 @@
     <Compile Include="Areas\VIS\Controllers\ProductContainerController.cs" />
     <Compile Include="Areas\VIS\Controllers\ProductController.cs" />
     <Compile Include="Areas\VIS\Controllers\RecordAccessController.cs" />
+    <Compile Include="Areas\VIS\Controllers\RefController.cs" />
     <Compile Include="Areas\VIS\Controllers\RelatedProductController.cs" />
     <Compile Include="Areas\VIS\Controllers\ResourceController.cs" />
     <Compile Include="Areas\VIS\Controllers\SmsController.cs" />
@@ -920,6 +926,7 @@
     <Compile Include="Areas\VIS\Models\Callouts\MWarehouseModel.cs" />
     <Compile Include="Areas\VIS\Models\CardViewModel.cs" />
     <Compile Include="Areas\VIS\Models\Chat\ChatModel.cs" />
+    <Compile Include="Areas\VIS\Models\CustomerFormModel.cs" />
     <Compile Include="Areas\VIS\Models\DocActionModel.cs" />
     <Compile Include="Areas\VIS\Models\EmailModel.cs" />
     <Compile Include="Areas\VIS\Models\ForecastFormModel.cs" />
@@ -939,6 +946,7 @@
     <Compile Include="Areas\VIS\Models\LocationModel.cs" />
     <Compile Include="Areas\VIS\Models\LocatorModel.cs" />
     <Compile Include="Areas\VIS\Models\MChart.cs" />
+    <Compile Include="Areas\VIS\Models\MVISCustomerInformation2.cs" />
     <Compile Include="Areas\VIS\Models\PAttributesModel.cs" />
     <Compile Include="Areas\VIS\Models\PaymentAllocation.cs" />
     <Compile Include="Areas\VIS\Models\PaymentAllocationModel.cs" />
@@ -965,6 +973,7 @@
     <Compile Include="Areas\VIS\Models\VTreeMaintenance.cs" />
     <Compile Include="Areas\VIS\Models\VTrxMaterialModel.cs" />
     <Compile Include="Areas\VIS\Models\WFActivityModel.cs" />
+    <Compile Include="Areas\VIS\Models\X_VIS_CustomerInformation2.cs" />
     <Compile Include="Areas\VIS\VISAreaRegistration.cs" />
     <Compile Include="Areas\VIS\WebPages\CreateUser.aspx.cs">
       <DependentUpon>CreateUser.aspx</DependentUpon>
@@ -984,6 +993,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\VIS\Views\BiPanel\GetHTMLReport.cshtml" />
+    <Content Include="Areas\VIS\Views\Home\home.cshtml" />
     <None Include="Areas\VIS\Views\Theme\ThemeCnfgtr.cshtml" />
     <Content Include="Areas\VIS\WebPages\CreateUser.aspx" />
     <Content Include="Areas\VIS\WebPages\CrystalReprotViewer.aspx" />
@@ -993,7 +1003,6 @@
     <Content Include="Areas\VIS\Views\Chat\LoadChat.cshtml" />
     <Content Include="Areas\VIS\Views\Email\Index.cshtml" />
     <Content Include="Areas\VIS\Views\Email\Init.cshtml" />
-    <Content Include="Areas\VIS\Views\Home\Home.cshtml" />
     <Content Include="Areas\VIS\Views\Home\Index.cshtml" />
     <Content Include="Areas\VIS\Views\Home\TimeoutRedirect.cshtml" />
     <Content Include="Areas\VIS\Views\Home\_Login.cshtml" />
@@ -1049,12 +1058,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">
-      <Project>{f8f980fc-83ef-4495-812e-5def569b9242}</Project>
-      <Name>ModelLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

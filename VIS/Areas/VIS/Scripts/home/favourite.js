@@ -68,7 +68,7 @@
         function addFavourite(barNode) {
             if (ul == null) return;
 
-            var li = $('<li data-nodeid="' + barNode.NodeID + '" >');
+            var li = $('<li id = "1" data-nodeid="' + barNode.NodeID + '" >');
             var id = 0;
             if (barNode.Action == "W") {
                 id = barNode.WindowID;
