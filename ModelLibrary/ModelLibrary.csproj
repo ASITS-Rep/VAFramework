@@ -1021,6 +1021,7 @@
     <Compile Include="Model\MVAFAMAssetHistory.cs" />
     <Compile Include="Model\MValRule.cs" />
     <Compile Include="Model\MVASCAppointmentsInfo.cs" />
+    <Compile Include="Model\MVISCustomerInformation.cs" />
     <Compile Include="Model\MWebProject.cs" />
     <Compile Include="Model\MWebProjectDomain.cs" />
     <Compile Include="Model\MWikiToken.cs" />
@@ -1564,6 +1565,9 @@
     <Compile Include="Model\X_VAMFG_M_WorkOrder.cs" />
     <Compile Include="Model\X_VAMFG_M_WrkOdrTransaction.cs" />
     <Compile Include="Model\X_VASC_AppointmentsInfo.cs" />
+    <Compile Include="Model\X_VIS_CustomerInformation.cs" />
+    <Compile Include="Model\MVISCustomerInformation2.cs" />
+    <Compile Include="Model\X_VIS_CustomerInformation2.cs" />
     <Compile Include="Model\X_WSP_GmailConfiguration.cs" />
     <Compile Include="Model\X_WSP_Note.cs" />
     <Compile Include="Model\X_WSP_SharedUser.cs" />

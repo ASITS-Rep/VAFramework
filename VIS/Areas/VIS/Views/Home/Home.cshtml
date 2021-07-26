@@ -1,4 +1,4 @@
-﻿@model   VIS.Models.HomeModels
+﻿@model  VIS.Models.HomeModels
 
 @functions
 {
@@ -28,8 +28,9 @@
             }
         }
         return d;
-    }        
+    }
 }
+
 
 <div class="container-fluid" id="dataContainer">
     <div class="row scrollerHorizontal">
@@ -40,45 +41,45 @@
                 <div class="vis-welcomeScreen-Data">
                     <div class="vis-welcomeMessage">
 
-                        <h1 id="vis-userGreeting"></h1>  
+                        <h1 id="vis-userGreeting"></h1>
                         <h2 id="visusrName">@Model.UsrName</h2>
                     </div>
 
                     <div class="vis-userAvatar-Container">
                         @if (Model.UsrImage != null)
                         {
-                            <img id="imgUsrImage" alt="User Avatar" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" class="vis-userAvatar-Large"  src="data:image/jpg;base64,@Model.UsrImage" />
+                            <img id="imgUsrImage" alt="User Avatar" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" class="vis-userAvatar-Large" src="data:image/jpg;base64,@Model.UsrImage" />
                         }
                         else
                         {
                             <i id="imgUsrImage" class="vis-userAvatar-Large vis vis-user"></i>
-                            
+
                         }
                         @*<input type="hidden" id="hdfUserImage" value="@Model.UsrImage" />*@
                     </div>
-                     <div class="text-center vis-change-picture-wrap">
-                        <label for="vis-file-input"  class="vis-file-label">
+                    <div class="text-center vis-change-picture-wrap">
+                        <label for="vis-file-input" class="vis-file-label">
                             <span class="vis-change-picture-ico vis vis-pencil"></span>@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ChangePicture")
                             <p>Ibrahim Edited</p>
                         </label>
                         <input id="vis-file-input" title=" " class="vis-change-pic-input" type="file" accept="image/*" />
                     </div>
                     <!--<div class="vis-status">
-                            
-                                
-                             @if (Model.UsrStatus != null)
-                             {
-                            <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:visible;">@Model.UsrStatus</label>
-                            <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:collapse;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
-                             }
-                             else
-                             {
-                            <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:visible;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
-                             <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:collapse;">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")</label>
-                             }
-<img  id="vis-img-OKStatus" src="~/Areas/VIS/Images/tick.png" class="vis-okStatus" style="visibility:collapse;"/>
-                                <img id="vis-img-CancelStatus" src="~/Areas/VIS/Images/cancel.png" class="vis-cancelStatus" style="visibility:collapse;"/>
-                        </div>-->
+
+
+                                                 @if (Model.UsrStatus != null)
+                                                 {
+                                                <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:visible;">@Model.UsrStatus</label>
+                                                <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:collapse;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
+                                                 }
+                                                 else
+                                                 {
+                                                <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:visible;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
+                                                 <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:collapse;">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")</label>
+                                                 }
+                    <img  id="vis-img-OKStatus" src="~/Areas/VIS/Images/tick.png" class="vis-okStatus" style="visibility:collapse;"/>
+                                                    <img id="vis-img-CancelStatus" src="~/Areas/VIS/Images/cancel.png" class="vis-cancelStatus" style="visibility:collapse;"/>
+                                            </div>-->
                     <!--<div style="margin-left:120px">
                         <input type="file" id="ImgUpload" name="Change Picture"/>
                     </div>-->
@@ -89,11 +90,11 @@
                 <div class="vis-welcomeScreenFeeds">
                     <!-- App Feeds Heading START -->
                     <div class="row">
-                        <h2 style="width: 100%">                            
+                        <h2 style="width: 100%">
                             <span id="spanWelcomeTabtopHdr" class="vis-welcomeScreenContentTittle-icon"></span>
                             <strong style="float: left;" id="sAlrtTxtType"></strong><strong id="hAlrtTxtTypeCount" style="display: none;"></strong>
                             @*<a id="hlnkTabDataRef" href="javascript:void(0)" style="float: right; margin-top: 0px; cursor: pointer; margin-right: 17px;" class="vis-feedIcons vis-icon-refresh" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Refresh")">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Refresh")</a>*@
-                             <!-- Refresh,New message from message window showing & symbol. Now we used CleanMnemonics to remove &.-->
+                            <!-- Refresh,New message from message window showing & symbol. Now we used CleanMnemonics to remove &.-->
 
                             <a id="hlnkTabDataRef" href="javascript:void(0)" style="float: right; margin-top: 0px; cursor: pointer; margin-right: 17px;" title="@VAdvantage.Utility.Util.CleanMnemonic(VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Refresh"))" class="vis-feedicon"><i class="vis vis-refresh"></i></a>
                             <span id="sNewNts" style="display: none; float: right; margin-top: 0px; cursor: pointer; margin-right: 6px;" class="vis-feedicon" title="@VAdvantage.Utility.Util.CleanMnemonic(VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "New"))"><i class="vis vis-plus"></i></span>
@@ -157,7 +158,6 @@
             </div>
         </div>
         <!-- App Welcome Screen END -->
-
         <!-- Workflow Activity Screen START(Will Open when user clcik on add item Or Edit item) -->
         <div id="workflowActivity">
             <div class="vis-workflowActivityContainer">
@@ -177,7 +177,6 @@
             </div>
         </div>
         <!-- Workflow Activity Screen END -->
-
         <!-- App Follups START -->
         <div id="fllupsScreen">
             <!-- App Follups Heading START -->
@@ -186,7 +185,6 @@
                 <a id="hlnkFllupsRef" href="javascript:void(0)" title="@VAdvantage.Utility.Util.CleanMnemonic(VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Refresh"))" class="vis-feedicon"><i class="vis vis-refresh"></i></a>
             </div>
             <!-- App Follups Heading END -->
-
             <!-- Follups Data START -->
             <div id="fllupsList" class="scrollerVertical">
                 @if (Model.HomeFolloUpsInfo != null && Model.HomeFolloUpsInfo.lstFollowups != null)
@@ -200,80 +198,81 @@
                             var divfllvmID = "divfllvm_" + item.ChatID;
                             var divfllvlID = "divfllvl_" + item.ChatID;
                             var txtFllCmntID = "txtFllCmnt" + item.ChatID;
-                            var btnFllCmntID = "btnFllCmnt" + item.ChatID;  
-                        
-                    <div id="@divfllupsID"  data-fll="divfllups" class="vis-feedContainer">
-                        <div class="vis-feedTitleBar">
-                            <h3>
-                                @item.WinName :  @item.Identifier </h3>
-                            <div class="vis-feedTitleBar-buttons">
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0)"  data-fll='azoomfllups' title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ViewFollowups")" class="vis vis-find" ></a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" data-fll='asubscribefllups'  title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UnsubscribeFollowups")" class="fa fa-rss"></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div id="@divfllcmntID" data-fll="divfllupscmntdata" class="vis-feedDetails">
-                            <div class="vis-feedDetails-cmnt" data-fll="fll-cmnt">
-                                @if (item.AD_Image_ID == 0)
-                                {
-                                   
-                                        <i class="fa fa-user"  data-fll="UID" data-UID="@item.AD_User_ID"></i>
-                                    
-                                }
-                                else
-                                {
-                                    foreach (var uitem in Model.HomeFolloUpsInfo.lstUserImg)
-                                    {
-                                        if (uitem.AD_Image_ID == item.AD_Image_ID)
+                            var btnFllCmntID = "btnFllCmnt" + item.ChatID;
+
+                            <div id="@divfllupsID" data-fll="divfllups" class="vis-feedContainer">
+                                <div class="vis-feedTitleBar">
+                                    <h3>
+                                        @item.WinName :  @item.Identifier
+                                    </h3>
+                                    <div class="vis-feedTitleBar-buttons">
+                                        <ul>
+                                            <li>
+                                                <a href="javascript:void(0)" data-fll='azoomfllups' title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ViewFollowups")" class="vis vis-find"></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" data-fll='asubscribefllups' title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UnsubscribeFollowups")" class="fa fa-rss"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="@divfllcmntID" data-fll="divfllupscmntdata" class="vis-feedDetails">
+                                    <div class="vis-feedDetails-cmnt" data-fll="fll-cmnt">
+                                        @if (item.AD_Image_ID == 0)
                                         {
-                                            if (uitem.UserImg != "NoRecordFound" && uitem.UserImg != "FileDoesn'tExist")
+
+                                            <i class="fa fa-user" data-fll="UID" data-UID="@item.AD_User_ID"></i>
+
+                                        }
+                                        else
+                                        {
+                                            foreach (var uitem in Model.HomeFolloUpsInfo.lstUserImg)
                                             {
-                                                <div class="vis-feedimgwrap" data-fll="UID" data-UID="@item.AD_User_ID" ><img data-fll="UID" data-UID="@item.AD_User_ID" class="userAvatar-Feeds" src="@uitem.UserImg" alt="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" /></div>
+                                                if (uitem.AD_Image_ID == item.AD_Image_ID)
+                                                {
+                                                    if (uitem.UserImg != "NoRecordFound" && uitem.UserImg != "FileDoesn'tExist")
+                                                    {
+                                                        <div class="vis-feedimgwrap" data-fll="UID" data-UID="@item.AD_User_ID"><img data-fll="UID" data-UID="@item.AD_User_ID" class="userAvatar-Feeds" src="@uitem.UserImg" alt="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" /></div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <i data-fll="UID" data-UID="@item.AD_User_ID" class="fa fa-user"></i>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        <p>
+                                            @if (ViewBag.User_ID == @item.AD_User_ID)
+                                            {
+                                                <strong data-fll="UID" data-UID="@item.AD_User_ID">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Me")</strong><br />
                                             }
                                             else
                                             {
-                                                <i data-fll="UID" data-UID="@item.AD_User_ID" class="fa fa-user"></i>
+                                                <strong data-fll="UID" data-UID="@item.AD_User_ID">@item.Name</strong><br />
                                             }
-                                        }
-                                    }
-                                }
-                                <p>
-                                    @if (ViewBag.User_ID == @item.AD_User_ID)
-                                    {
-                                        <strong data-fll="UID" data-UID="@item.AD_User_ID">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Me")</strong><br />
-                                    }
-                                    else
-                                    {
-                                        <strong data-fll="UID" data-UID="@item.AD_User_ID">@item.Name</strong><br />
-                                    }
 
-                                    @item.ChatData
-                                </p>
-                                <p class="vis-feedDateTime">@GetLocalDate(item.Cdate, ViewBag.Current_Ad_Lang)</p>
+                                            @item.ChatData
+                                        </p>
+                                        <p class="vis-feedDateTime">@GetLocalDate(item.Cdate, ViewBag.Current_Ad_Lang)</p>
+                                    </div>
+                                </div>
+                                <a id="@divfllvmID" data-fll="viewmorefllupscmnt" href="javascript:void(0)" class="vis-viewMoreComments"><span class="vis-feedIcons vis-icon-viewMoreComments"></span>@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ViewMoreComments") ..</a>
+                                <a id="@divfllvlID" data-fll="viewlessfllupscmnt" style="display:none;" href="javascript:void(0)" class="vis-viewMoreComments"><span class="vis-feedIcons vis-icon-viewMoreComments"></span>@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ViewLessComments") ..</a>
+
+                                <div class="clearfix"></div>
+                                <div id="@item.ChatID" class="vis-feedMessage">
+                                    <input id="@txtFllCmntID" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "TypeMessage") ...." data-fll="txtcmntfll" type="text" value="" />
+                                    @*   <input id="@btnFllCmntID" data-fll="btncmntfll" type="button" class="vis-feedIcons vis-icon-message" value="" />*@
+                                    <span id="@btnFllCmntID" data-fll="btncmntfll" title=" @VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "PostMessage")" class="vis vis-sms"></span>
+
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
-                        </div>
-                        <a id="@divfllvmID"  data-fll="viewmorefllupscmnt" href="javascript:void(0)" class="vis-viewMoreComments"><span class="vis-feedIcons vis-icon-viewMoreComments"></span>@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ViewMoreComments") ..</a>
-                        <a id="@divfllvlID"  data-fll="viewlessfllupscmnt" style="display:none;" href="javascript:void(0)" class="vis-viewMoreComments"><span class="vis-feedIcons vis-icon-viewMoreComments"></span>@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ViewLessComments") ..</a>
-
-                        <div class="clearfix"></div>
-                        <div id="@item.ChatID" class="vis-feedMessage">
-                            <input id="@txtFllCmntID"  placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "TypeMessage") ...." data-fll="txtcmntfll" type="text" value="" />
-                            @*   <input id="@btnFllCmntID" data-fll="btncmntfll" type="button" class="vis-feedIcons vis-icon-message" value="" />*@
-                            <span id="@btnFllCmntID" data-fll="btncmntfll" title=" @VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "PostMessage")" class="vis vis-sms"></span>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
                         }
                     }
                     else
                     {
-                    <p style="margin-top: 200px; text-align: center">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "NoRecordFound") !!!!</p>
+                        <p style="margin-top: 200px; text-align: center">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "NoRecordFound") !!!!</p>
                     }
                 }
                 else
@@ -289,32 +288,30 @@
             <!-- App Follups Loder End-->
         </div>
         <!-- App Follups END -->
-
         <!-- App Favourite And Links START -->
         <div id="favLinks">
-            <!-- Favourite And Links Heading Tabs START -->
 
+
+            <!-- Favourite And Links Heading Tabs START -->
             <!-- App Links Heading START -->
-            <div class="col-md-6 col-sm-6" id="userLinks">
+            <!-- <div class="col-md-6 col-sm-6" id="userLinks">
                 <div class="row userLinks_activeTab">
                     <h2><a href="javascript:void(0)" id="userLinks-Tab"><span><i class="fa fa-link" aria-hidden="true"></i></span>Links<strong></strong></a></h2>
                     @*<a href="javascript:void(0)" class="vis-linksIcons icon-add" title="Add Link">Add Link</a>*@
                 </div>
-            </div>
+            </div> -->
             <!-- App Links Heading END -->
-
-            <!-- App Favourites Heading START -->
+            <!-- App Favourites Heading START
             <div class="col-md-6 col-sm-6" id="userFavs">
-                <div class="row userFavs_inactiveTab">
+                <div class="row userFavs_activeTab">
                     <h2><a href="javascript:void(0)" id="userFav-Tab"><span class="vis vis-favourite"></span><span class="favouriteTabLabel-Small">Fav</span><span class="favouriteTabLabel-Large">Favourites</span><strong></strong></a></h2>
                     @*<a href="javascript:void(0)" class="vis-linksIcons icon-add" title="Add Link">Add Link</a>*@
                 </div>
             </div>
             <!-- App Favourites Heading END -->
             <!-- Favourite And Links Heading Tabs END -->
-
             <!-- App Links List START -->
-            <div id="userLinks-List">
+            <!-- <div id="userLinks-List">
                 <div id="vis_linkScroll" class="scrollerVertical">
 
                     <img src="~/Areas/VIS/Images/busy.gif" />
@@ -322,23 +319,211 @@
 
                 </div>
                 <div class="vis-verticalScroller-End"></div>
-            </div>
+            </div> -->
             <!-- App Links List END -->
-
             <!-- App Favourites List START -->
-            <div id="userFavs-List">
-                <div id="vis_favScroll" class="scrollerVertical">
-                    <img src="~/Areas/VIS/Images/busy.gif" />
+            <div id="customer-section" style="display:block;">
+                <div id="customer-section-container">
 
+                    <div class="search_text_container">
+                        <input type="text" name="search_text" id="search_text" placeholder="Search...">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAQACAYAAAB/HSuDAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAASR5J
+                            REFUeNrs3V1sXed5J/qV2KAyHjFhQzWONM1oC43NzkyUKB8XjoBEW0cVnGlmHBnoRWeKQem7OVexr4iSKGzDIA1e2b46OFeWcdCDGSAYyymSUyOytaUEijET24ztASK5HW0h
+                            teUqVsseqogjwDOznv1hURIpkpv7Y631/n7AxpbdNDGfTe+13v963ufNMgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEfuYEgCkbX5hsZa/1Xr4f12am51ZVkEAAAEAAINfvB/I3yY6f7n6
+                            z5/q/PVq9SH+ozVu+uul/PUPnT8vd/669ee52ZklnyQAgAAAIOXFff2mhfuXOgv8iTUW91Ww1AkH4vXz1UHB3OxMw28EAIAAAKDsi/xa59Vd4NdVZk3Lq0KCCAia8RIOAAAI
+                            AACKssjvPrGP195Vf55Qnb6HA/G6mLXnEwgGAAAEAAADW+zXVi3wD2XXn+4zGs1OKBAdAxEIRMdAU1kAAAEAAFtZ7Hef7Nc7i31P9cthuRMGdEMBpxkAAAIAAG5Y8K9+sh+L
+                            /pqqVEZ3+8DpCAV0CQAAAgCA9Bb89VULfk/309HtEugGAo4qBAAEAAAVWvDX8rdjFvzcJhB4IdMhAAAIAABKt+DvHrn3nUxLP1sTAcCJ/HV6bnbmhHIAAAIAgOIt+g/ctOiH
+                            fmiFAfGuOwAAEAAAjG7R313wR3t/TUUYsGYnEHjO7AAAQAAAMPhF/7FVi357+RllGNDIXy/YKgAACAAALPpJQwwSPCEMAAAEAAAW/aQXBjxjmwAAIAAAWH/RH4P8/iSzp59qa
+                            K4KA5rKAQAIAIDUF/3xdH+6s/A/oCJUVHQDPJO1TxNYVg4AQAAApLTwP5Zdf9oPKTmemRcAAAgAgIov+mvZ9af9NRUhcc389VwEArYIAAACAKAqC39P++H2urMCGkoBAAgAg
+                            LIt+mNv/8OZp/2wFc2sPSvguFkBAIAAACj6wj8G+X03a7f6A73pHif4uO0BAIAAACjawv9YZ+FfVw3oq0YnCGgoBQAgAABGufCfzt8ezbT5w6C1jhKcm505rhQAgAAAGNaiv
+                            7u/P574T6gIDFUzMycAABAAABb+kIzlThDwtCAAAAQAAP1a+Neydpv/MQt/EAQAAAIAoLoL/2nVAEEAACAAACz8AUEAACAAAEq08O/u8X9UNUAQAAAIAIDqLvwN94OKBgFzs
+                            zOPKQUACACAtBf/3Sf+Fv5Qbc389fjc7MxxpQAAAQCQ1sJ/urPwr6kGJBcEPDQ3O9NQCgAQAADVXvjXOwv/umpA0iIAeGRudmZJKQBAAABUa+Ffy0z2B251vBMEGBQIAAIAo
+                            OQLfwP+gI0YFAgAAgCg5Iv/Y/nbU5l9/sDmNDPzAQBAAACUauEfC/5nM/v8gd6cyNrbAppKAQACAKCYC/9uu/+jqgFsk20BACAAAAq6+K9n7af+NdUA+ihOCXjEtgAAEAAAo
+                            1/4T3QW/sdUAxigp/PX404LAAABADCaxX+33d90f2AYYvEfQwJPKAUACACA4Sz8a5khf8DonOgEAboBAKAAPq4EUNnFfzz1f93iHxih2HJ0oXPUKAAwYjoAoHoL/1rmqT9QP
+                            LoBAGDEdABAtRb/nvoDRaUbAABGTAcAVGPhH8P9nrfwB0pCNwAACACAHhb/8TQtWv5N+AfKJBb/D87NzjSUAgAEAMDtF/6x4H8qf02rBlBiT+evx3UDAIAAAFh78X8ga7f81
+                            1QDqIClrL0lYEkpAGBwDAGE8i3+H8vag/4s/oGqiFDzVGeQKQAwIDoAoDwLf4P+gBQYEAgAAgBIevFf7yz+DfoDUtDM2gMCbQkAgD6yBQCKv/h/LH87ZfEPJKSWv163JQAA+
+                            ksHABR34a/lH8CWAAAQAEDFF/+m/ANc55QAAOgDWwCgeIv/6cyUf4DVuqcEHFMKABAAQFUW/8/mb8+qBMAtWtui8u/Jp5QCAHpjCwAUY+EfN7Yx6O+AagBsqJG1TwkwFwAAB
+                            ABQqsX/gcyUf4ZgbGws27Vr8pa/v2fP7p7/O99999Itf+/9969k165dU3AGzVwAABAAQKkW/9P521MW//RqfHw8f+28YXE/OTnZ+usQf6/751GIICACge6fr1y5ckNIsLJyN
+                            X+t+CDp1XInBDihFAAgAIAiL/4fy98eVQk2Ek/ouwv8nTvbC/7uwr8qukFAvF+9uvJRQLBWhwGsIUKA48oAAAIAKNrCP572x1P/adXg5oV+d2G/e/fuyi3ytxsOXLp0qfXnC
+                            Ae6nQSwyvG52ZmHlAEABABQpMW/YX+0FvvRqh+vXbs+3XpnayIEeP/9v2u9x0u3AJnhgAAgAICCLP5j0f98/qqpRlriSX57wf/pjxb+DEaEAN0w4MqVvzNfIE0xFPCwEAAAB
+                            AAwysW/Sf+JLfijjb/d1q+Nf1Riy0CEAbF9IN4FAslY7oQATggAAAEADHXxP52/PasS1RUD+vbtq1nwlygQaDabrXfHFVY+BIjtAA2lAAABAFj807No49+3b29Wq+3V0l9is
+                            V2g2byYXbhw0WDB6nJCAAAIAGDgi/+Y9P+wSlRDPOWPp/u1Wq218I+/plpWdwdEKIAQAAAEAMBmFv/x1H9aJcq/6N+3r9Z6yh8v0hFbA6IrIGYHXLjQtFWgGhwTCIAAQAnA4
+                            h+Lfm4vOgLOnTuvM0AIAAACAKC18I8J/3HMX101yqe94K9lU1P3KAbr6nYG2CYgBAAAAQCkvfiPY/4OqEZ5xPC+WPBPTd1rTz9bFjMDIgh4883/7njB8jmRtecCLCsFAAIAw
+                            OK/orot/vv3/yvT++mbGB54/vzb5gWUy1L+OiwEAEAAAFj8V0ws9vfv/4IJ/gxUd4vAq6++pitACAAAAgCw+GeYor3f035GodsVEMMDEQIAgAAALP4ZgPHx8dbe/nji72k/o
+                            xazAs6fP5+98cZbtgcIAQBAAAAW//Rr4f/Vr37FJH8KyfYAIQAACADA4p9t2rNnd2vhH+9QBufOvd3qCohtAggBAEAAABb/bKBW29tq87fwp6wiAIiOAEGAEAAABABg8c8aY
+                            rBfPPEfH9+pGAgCEAIAgAAALP4t/EEQgBAAALruUAKw+C+6aPG///6j2b/8l/8i27HDVH+qq32Cxb2t3/mrV6+2ThBgZD4br5dfOvmCUgBQFToA4PYBwOsW/6Nd+BvuR8qiE
+                            +Ds2VeyK1euKMboHJ+bnXlIGQAQAEC1F//P5m/TKjF88RT04MH7WkP+gPapAY4PFAIAgAAALP4rY2xsLF/4fz2bmrpHMWANEQK88cZb2bVr1xRj+J6em515RBkAEABAtRb/T
+                            +VvD6vEcH3ta19pHekXIQCwvlj8x7aAc+fOK8bwPTQ3O3NcGQAQAEA1Fv/T+duzKjE8sb+/Xj9ksj9sUcwFiCDAiQFCAAAQAIDFf6HFPv96/ZsG/ME2xXyAs2d/alvAcMXxg
+                            A1lAEAAAOVc/Mek/9dVYji0+0N/xeL/Zz97LXvzzbcUYziWOyHAklIAIACA8i3+T+WvCdUYLO3+MFixLeDUqTOODRxeCLBvbnZmWSkAEABAORb/seiPJ/811Rgc0/1huKITI
+                            DoCbAsYuOgAOCwEAKAs7lACEl/8x5P/31ONwanV9mYPPPBvsrvv/oxiwJDEv2+f//zvtjoBVlauKsjgfDauIS+/
+                            dPI/KwUAAgAosCNHjv5f+du3VGIw4qn/7//+/9Ha73/HHb5qYNh27BjLpqbubb3/7d9ezj788ENFGYzfy68ntZdfOvmCUgBQdLYAkKT5hcXH8rdHVWIw4qn/4cOHDPmDgogu
+                            gEbjtCMDB8vxgAAIAKCAi//pzHF/AxEL/lj4RwAAFI/ZAAPneEAABABQoMW/if8DYsI/lEN0A7z44o+cFDAYjgcEQAAABVn8x6L/gsV//x08eF+2f/8XFAJK5NVXX2t1A9B3T
+                            gYAoLDuVAIS4sl/n01OTmaHD3+z9Q6Uy1e/+pVs9+7dWaNxJltZWVGQ/olOs9hm9qBSAFA0RnOThPmFxbgZM/G/j2K6eEz5Hx8fVwwoqfj3N/5dXl5ezl//oCD9EycDfOzll0
+                            42lAKAIrEFgBQW/9OZoX99E4P+Dh78er5ouEcxoEJiQODZs68oRH89ODc7c0IZABAAwHAW/9GK+bpK9IeWf6i2GAz44osnbQnoH0MBARAAwJAW/xOdxX9NNbYvjvaLI/6iAwC
+                            orjgiME4JePfdS4rRH4YCAlAYH1cCKux5i//+iCn/999/1OIfEhD/nv/bf/ttJ3v0T3SiPaUMABSBIYBU0vzC4mP527RKbH8h8Ad/8K3s85//XcWAxHzuc7/TGhIYnQAffvih
+                            gmwzBDhy5OjFl186aSsAACNlCwBVXPzXs/aRf2xD7POPp/7j4zsVAxJmLkBffdk8AAAEANC/xX/s+7+QvyZUo3f2+wOrxVyA73//B60wgG1pdkIA8wAAGAkzAKia5y3+tyf2/
+                            drvD6wW3wd/+IcPZlNT9yrG9tQyx9ICMEJmAFAZ9v1vX71+KPvyl7+kEMDaq9fa3mzHjrHsl7/8G8Xo3e+ZBwDAqNgCQFUW/zFl+XWV6E083Yun/nv27FYMYEPnzr2dnT3709b
+                            WAHoSWwAOmwcAwLDZAkAVFv/R8v+8SvS++H/ggW9b/AObNjV1T+t7w1ahnsV1y1YAAAQA0IM4X7mmDFsXk/7/+I//qPUOsNXvjwgB4qhAenJgfmHxKWUAYJhsAaDU8punY5mn/
+                            9u6efcED9gOJwRsW2wFaCgDAAIAuP3iv5a19/2b+r9FMcn74MH7LP4BIcDoNTNHAwIwJLYAUGbPWvz3tviv179p8Q/0TXeWiGMCe1LLzAMAYEgcA0gpzS8sPpy//UeV6G3xD9D
+                            3G4o77mgdE3j16lWdAFsXRwP+/OWXTv5CKQAYJFsAKOPiv5Zp/bf4Bwqr0TiTnTt3XiG2JrYA7LMVAIBBsgWAMtL6v0Vf+9pXLP6BoYnvG9sBtszRgAAMnC0AlIrW/15uxA9l+
+                            /d/QSGAobIdoCe2AgAwULYAUKbFfy3T+r/lxf/U1D0KAYyM7QBbZisAAANjCwBlovXf4h8o3XeR7QBbZCsAAANjCwClML+wOJ2/PawSmxN7/rX9A0VhO8CW2QoAgACAZBf/8TT
+                            k/8tfn1CNjcWTtoMH71MIQAhQbvcdOXL0uZdfOvmBUgDQL7YAUAZa/7ew+DftHygq2wG2pJa/HlUGAPrJEEAKbX5hsZ6/nVIJi3+gOl588UdZs3lRITbny3OzM0vKAEA/6ACgy
+                            It/g5As/oEKOnz4UDY5OakQm+M6CIAAgCTE0L+aMtxe3ETb8w+UydjYWPbAA98WAmzOgfmFRUNwAegLWwAopPxmJxb+F1Ri48V/3ETHzTRA2Vy7di373veez1ZWVhTj9pbz176
+                            52ZllpQBgO3QAUFRaHjfQfYJm8Q+U+Xvs/vt/3/fYxmJL3FPKAIAAgMqZX1g8lr/VVcLiH6g+nUybNt0ZjAsAAgAqs/j3lGMT7r//qL2zQKVCgIMHv64QG3N9BEAAQKUY/LeBe
+                            v1QtmfPboUAKmVq6h4DTTdmICAA22IIIIXRGfz3etbe68ga9u//ghtkoNIajTPZuXPnFWJ9BgIC0DMdABTJoxb/66vV9lr8A5VXr3/TFqfbm+hcLwFgy3QAUAidwUanVGJthmQ
+                            BKXE84KZEF0BTGQDYCh0AFIWnGetoH5N11OIfSOx7z/GAGzAQEAABAOUzv7A4nTn2b12x+B8f36kQQFKcDLChY44FBEAAQBl5+r+O2PNv4j+QqjgZIIaf4voJgACACugcZ1RTi
+                            VvF0D83vkDqBKG3Ve900QGAAIDCL/5NMl5HtL4ePnxIIQCyzByU23MdBUAAQCnE03/H/t0kbnIPH/6mm12AVd+LEQKwppouAAAEABRa5+n/d1XiVjH0yhnYADeKbQCxHYA1PdW
+                            5rgKAAIBC8vR/DVNT97aGXgFwq5iLYh7AmiY611UAEABQLPMLi7XM0/9btI+88nQL4HbMA1jXd3UBACAAoIhiYJGblJvY9w+wMfMA1qULAAABAMXSefo/rRI3iif/9v0DbE5sA
+                            3BM6pp0AQAgAKBQHFfkRhZg2wSna9IFAIAAgGLw9P9W0cparx9SCIAe2Dq1Jl0AAAgAKARP/2+5eT2UjY/vVAiAHkQHwNe+9hWFuJEuAAAEAIxW52nEMZW4rlbb23oB0DtHA65
+                            JFwAAAgBGKp5GuBnpiJbVePoPwPbFVipbAW4Q19tpZQBAAMDQdZ5CfFclrovFv5tVgP6IrVS2AtzCdRcAAQAj4en/Klr/AfrPVoBbLzfzC4vTygCAAIBh8xSiQ+s/wODYCnALw3
+                            cBEAAwPJ2nD57+dxw8+HU3pwADElsBvvjFLyjEddEFYAAvAAIAhsbTh45oTZ2aukchAAboq1/9Sut4QD6iCw8AAQCD13nqUFOJtmhNBWDwDh68TxFWXX7y63FdGQAQADBonjp0x
+                            HTqaE0FYPCi4yqGAvKRP1ECAAQADMz8wuKB/K2uErEnddyNKMCQRfBq5spHpvPrck0ZABAAMCie/nfU6990EwowZPG9G4NXuR4CKAEAAgD6bn5hccKNRlu0oTqXGmA0YvCq7+C
+                            PCOYBEAAwEA8rQZvBfwCjFacC0DLROZoXAAEA9JVhQ5nBfwBF0D6C9V6FaNMFACAAgP5x9F9b7D01+A+gGKILwCyWlgOOBAQQAEA/efqfZa3BU242AYohurG++EWhrOs0AAIA+q
+                            ZzxNAxN5rjrcFTABRHdGXF9zOtIwEnlAFAAADbvqlQgnj6f58iABRMdGUZCOh6DSAAgP5Jvq0whk3Vanv9JgAUUHRn6QJoMQwQQAAAvTP8r83TJYBi06XVUsuv2weUAUAAAL3y9
+                            H/P7tYLgAKvfGt7fVe36QIAEADA1nWGCSU//M9TJYBy0K3VcswwQAABAPRiOvUCTE3dm01OTvpNACgBHVstwnsAAQD0JPn2f0+TAHxvu34DIACg0jpDhJIeJBRP/8fHd/plACgR
+                            XQAt9fw6XvPbACAAgM3y9N9TJADf3+VlGwCAAADcOGxGPD3y9B+gvN/hugAE+QACANiE+YXFWPzXUq6Bp0cAvsdL7kBnOx8AAgC4re+k/MN7cgRQje/y8fHx1MugCwBAAAAbSrr9
+                            31MjAN/nrucACACovE77/0SqP388LfL0H6AapqbuSb0LoGYbAIAAAG4n6fZ/T4sAqmX//n+VeglsAwAQAMC6km0XjKdE8bQIgOqYmro3Gxsbc10HQAAAq6Xe/m/xD1A9sfjft6+
+                            WcglsAwAQAMCakm7/37//C34DACrI9i7bAAAEAHCrZNsEtYgCVNf4+M6sVtvr+g6AAADC/MJiPUu4/d+QKIBqi6A3YbYBAAgA4AbJtv9PTk62XgBUeAVc25v6kYB1vwUAAgDoSr
+                            Y90N5/gFS+75Pu9jIHAEAAAK32/2gLrKX4s7enQ+/1SwCQgMS3ARzIr/cTfgsABABQT/UH37evZvgfQCLi+94wQAAEAKQu2f3/hv8BpCXxLoDv+A0AEACQsE47YD3Fn93wP4D0J
+                            D4MsO43AEAAQNqSvRmYmrrHpw+QaAiQqInOsb8ACABIVLLtgIm3gQIkK/HTXwQAAAIA3AikJZ7+GP4HkKbx8Z0pbwEzBwBAAECK5hcWa1mix//VajW/AAAJS3gbmOMAAQQAJCrJ
+                            44Diyb/9/wCpBwBJbwOr+w0AEACQnkMp/tD79tV88gCJizA44WGAtgEACABIUD3FHzrhGz4Abrge1Fz/ARAAUH3zC4sH8rfk9gAm/sQHgFX27Uv2elDrzAECQABAIupp3uy53wG
+                            gLfFQuO43AEAAQDqS3P/v6T8AN14Xau4DABAAUHn11H5g7f8A3CzhbQAHfPoAAgASkOr+/z17dvvwAbhBhMOTk5NJBgD5/cCE3wAAAQAJXPRT/KETbvME4Dampu5J9Uev+/QBBA
+                            BUX5L7/hJu8wTgNswBAEAAQJXVU/uBo70z2jwB4Gbj4zvz13iKP7o5AAACAKqss9+vltrP7ek/ALeT6JDYuk8eQABAtSW6/18AAMD6Uh0UO7+wKAQAEABQYcld6BOe8AzAJiUcF
+                            NsGACAAoMKSG/izb1/Npw7AhhLtAviSTx5AAEB1JZf0796926cOwIYS7QLQAQAgAKCK5hcWa/nbRGo/d6r7OgFwvRAAAAgASFdyF/k41imOdwKAjaR6ZKxBgAACAAQAleDpPwCuG+4PAAQApCi5AYD
+                            2/wMgANiQQYAAAgAqqOZGDgBcN1K/PwAQAFBp8wuLE6ld4O3/B2CrYg5Aguo+eQABANVi/z8AuH6saX5h0RwAAAEAAoDympz8tE8dAAHA5tR88gACAKpjrxs4ANhYogNkdQAACA
+                            BwYS+vRPdxArBNu3Ylef1wEgCAAAABQDl5+g9Ar8bGxlqDZBNT88kDCACojomUflhP/wHY3nUkuTkytgAACACogvmFxXp6N24CAAB6l+I2gPx+oeaTBxAAUH7JXdB37XICAAC9S
+                            3QQoAAAQACAC3r56AAAYDsSHQRoGwCAAIAKSGqyrwGAAGxXooMAJ3zyAAIAXNBLJcEbNgAGcj3ZmdqPfMinDiAAoPzqbtgAYGsS7CjTAQAgAIBySXRwEwB9tnNnch1lZgAACAAo
+                            sxSPALQFAID+XE/S6yjL7xt0AQAIAMANGwBpSXSorC4AAAEAJVZ3swYAvXESAAACACioOLYJAPoXACTXVaYDAEAAQIl9KaUfdteuSZ84AH0zOem6AoAAgPJIqpUvwYnNAAzQjh3
+                            JdZYd8qkDCAAQAJSCAYAA9JOjZQEQAFAmSe3lcwQgAGxLTQkABABQkgBABwAA/ZPg6TICAAABAGU0v7Do6T8AAIAAgATY/w8A25TaSQCpPUAAEABACY2NjSkCAH2X4EkAEz51AA
+                            EA5ZNUgr9rl7OaAeg/W8wAEABQBhJ8ANh2AJDcFjNbAAAEAFBsqe3RBIAB8QABQABACX0qpR/WDAAABkHADIAAgDLQwgcA2yRgBkAAAAVjCCAA9MUhJQAQAECheUIDwCAImAEQAA
+                            AAJEDADIAAgDKouzkDAAAQAEBlaM8EgL5xDCCAAAAAIE2JHQXoFCEAAQAAQJp27LDVDAABAAAAACAAAAAAAAQADMz8wmItpZ93z57dPnQAAEAAQJJqSgAAACAAAAAAAAQAAAB02
+                            WoGgAAAAAAAEAAAAAAAAgAAAABAAAAAAAAIAAAAAAABAAAAAAgAAAAAAAEAAAAAIAAAAEjKu+9eUgQABAAAAACAAIDRWVICAAAAAQAVNzc7s5zSz6s1EwAAEAAAAAAAAgAAAABAAAAAkLyVlauKAIAAAACg+
+                            gHASko/rkHCAAIAKK7337+iCADQH8tKACAAoHwaqfyg165d82kDAAACAAAAemP/PwACACgYXQAADCYAWFEEAAQAUCTmAABAX5xWAgABAOVjii8AbJMOMwAEAJTBP7hBA4DtuXJ
+                            FhxkAAgBwgwYA1dNUAgABAOXjHF8A2KYEZ8wIAAAEAJRQUjMADAEEYBBsMQNAAABu0ABIwG9+k9z1RQchgAAAF/BiW1m56hMHoO9SmzEzNzvjFCEAAQAu4EUPAFZ86AD0le4yA
+                            AQAUNgQQBcAAP1jACAAAgDKRBcAAPQowQ4AAQCAAIASMwcAAHqU2v7/zABAAAEALuRlcfWqDgAA+ifBYPnnPnUAAQAu5KWQ4F5NAAYaAAiWARAAUB62AABAjxIMlhs+dQABAOW
+                            V1BDABPdqAjBAjgEEQAAABaYLAIB+ePfdSyn+2Es+eQABACU1NzvTSC8AsF8TgH5cT9ILlPP7BqcAAAgAKLmkLuaXLl3yiQOwbQmeLOPpP4AAABf0crEFAIB+SHALgKf/AAIAX
+                            NDLxVGAALie9OS0Tx1AAED5/TylH9ZJAABsV0z/T/AEAB0AAAIAKiC5PX1CAAC2I9FuMjMAAAQAVEByif777/+dTx2AniU6ULbpkwcQAFByKR4FqAMAgO1IsQMgv18QAAAIAKi
+                            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
+                            du5b98Id/mTWbFxVj67T+AyAAgHVCAFsBegwB4vXP//nnsjvu8K8/0N/F//e//4Ps8uXLirF1Wv8BGApbACgzWwF6EE/m4iY9btYB+rn4j4CRLVvKtP4DMCQfUwLKbH5hsZ6/nV
+                            KJrZucnMweeODb2djYmGIAPYtF/6lTZyz+e/fludmZJWUAYBj0AFNqL790snnkyNGJ/I/3qcbW/PrXv87++q//R7Znz+7srrvuUhCgp8V/PPmP+SL05PF88f+flAGAYdEBQCXML
+                            yy+nr8dUImtiw6A6ASIjgCAzYrtRKdOnbadqHeNfPF/WBkAGCYzAKgK8wB6FDfv3/ve89m5c28rBrAp8X3x4os/svjv3XLnugUAQ2ULAJXw8ksn3zty5Ohv8j9+SzV6E0/zduw
+                            Yy+6++zOKAazr7NlXsv/6X/+bQmzPv5ubnXlFGQAQAEDvIcArjgbcnl/+8m9ae3lrtb2KAdwgnvafPPlydv68bqFtiiP/nlEGAEbBFgCqJloqm8rQu3Pnzre2BGjtBbpWVq62hv
+                            1FpxDbspQv/h9RBgAEANAH+Y1V7Kt8UCW2JyZ7RwjgWC+g/X3wX3wfbJ99/wCMnC0AVE5nHsA/ZOYBbEt0APzVX/2P1hGBu3Y5IQBSFMP+fvjDv8w+/PBDxdi+2PffUAYABADQ/
+                            xAg5gHUMkcDbkvc9EfLb4QBn/vc7ygIJKTROJO9+uprCtEf9v0DIACAQTpy5OjprN0F8FnV2J7Lly9nly5dyvbtq2V33OFrA6os9vv/xV/8oDUUlL6Iff+2pgFQCGYAUFmdeQCx
+                            33JZNbbv3XcvZX/+5/+p9Q5UU3T82O/fV3H9OawMABSFR3lUWmcewLn8j3+kGtsXWwLiCLAdO8ayu+/+jIJAhZw9+0rrZb9/X/3rudmZXygDAAIAGF4I8IsjR45O5H+8TzX6I1q
+                            DbQmAaui2/Dvir79+9avLzWbzwuNvvvnGB6oBQFF8TAlIxfzC4qn8ra4S/TM2Npbdf//RbM+e3YoBJRSL/lOnTrcGfdI/y8vL2TvvtGYoLOWvw//vn/8/tqIBUAhmAJCSBzs3Y/R
+                            JLBriyWG0DQPl+nc3/r198cUfWfz32QcffJC9995Hs1LiJJpT//6P/8OEygBQBDoASMr8wmLrZix/uRnrs8nJyezw4W+23oHiigF/L754MltZWVGMPov5CW+/fX6tOQo6AQAQAMC
+                            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
+                            8Gyn90KmFAPHUPwIA1hVzLg4bEAgIAIDUgoDpThBQUw2otGb+eii1hX9qIUA87f/t3/5M9olPfMJv/MaWOyHAklIAAgBAEABUZeFfuQF/QoC1F/933/1Z+/23HgI8+OTCEw2lAA
+                            QAQGohQNwYx5DA72ZODAALfyFAacSiP57833nnnT7g3jzkqEBAAAAIAgQBUDatyf75wv8xpUgjBIjFfzz5N+xPCAAIAAAEAZDQwj+r8JF+QgCLfyEAgAAAEARAypqdhf9xC/+0Q
+                            gCLfyEAgAAAGHQQMN0JAmoqAiNf+Nvjn2gIYPEvBAAQAADDDAMiCHBqAAxfHFn2jIV/uiGAxb8QAEAAAIwqCDiWtTsC6qoBA9XI2k/8G0qRbghg8S8EABAAAEUIAiIA+JOsvUUA
+                            6J/jnYV/UynSDgEs/oUAAAIAoGhBQC27PifAwEDoTSz2n8tM9BcCWPwLAQAEAEBJwoBuEHBANWBTGrHwt79fCGDxLwQAEAAAZQ0CDnSCgGnVgFvEE/4TWXuw35JyCAEs/oUAAAIA
+                            oApBgGME4brWNP9Y/GvzFwKsJRb9u3fvye68804fhBAAQAAAlDoM6HYFxCkCZgWQiljox8LhOU/7hQAbLf7jyX90ACAEABAAAFUJAiY6IUCcIFBXESoqWvxfsLdfCLBZsfj/xCc
+                            +ofBCAAABAFDZMKC2KgwwOJCyiyf8Mcn/uBZ/IcBWTE7uynbu3KngQgAAAQCQTBhwoBMERCBQUxFKorlq0d9UDiHAVsXCPwIAhAAAAgBAGCAMoJiL/mjxt69fCLAtJv4LAQAEAA
+                            DCAIonFvovZO0J/hb9QoC+iIn/hv4JAQAEAABrhwG1zMwAhqexatHfVA76GQL81m99OvvkJz+pqEIAAAEAwCbCgO5pAt/J2qcJOFqQ7YrBfdHaf7qz6DfIj4GEADHtP1r/EQIACA
+                            AAegsE6p0g4DuZ7gA2r7Fqwa+1n6GEAFr/hQAAAgCA/oUBE50w4FBmdgA3Wlq16G94ys+wQ4Bo+4/2f4QAAAIAgMEEArVVgcCBTIeABT+MIASIaf//7J/9jqn/QgAAAQDAEAOBiZ
+                            sCgbqqVEZ3sb9kwU/RQoCJiYnsU58yrkQIACAAABh1KNANAr6U6RIoi6XOq7Xgt4efIocAd955Z+vpP0IAAAEAQDFDgXrnhj5CgVqmU2CUGp3F/sXOYr+hJJQpBHDsnxAAQAAAUL5Q4EAnDFgdDOgW6O9Cv9
+                            ld6HcW+01locwhgL3/QgBlAAQAANUKBmqrwoBYBBzqvAsHbhUL+9ibf7rzHn/dtNCnqiGAvf9CACEAIAAASCccmFgVDHQXBYc6793goGqL+3j9vPP3Gt3/m6F8pBgCxNP/mAGAE
+                            EAZAAEAAN2goBsSZKsCg+ymwKBr0N0FjTX+3ulVf252XmHZAD5YOwS46667Dvz2b39GQRACAAIAAIAqhwCf/ezu13fs2FFTDYQAQD+ZKgMAUCB799Yyi39u8uyfzv7ZtDIAAgAA
+                            gGo5pgQIAQABAABA9X1HCRACAAIAAIDq0wGAEAAQAAAAVFm+sLP4RwgACAAAABJwSAkQAgACAACA6jugBAgBAAEAAED11ZUAIQAgAAAAqLB8EWfxjxAAEAAAACSgpgQIAQABAAC
+                            AAACEAIAAAACgApwAgBAAEAAAACRgQgkQAgACAACA6nMEIEIAQAAAAAAIAQABAABAqeWLtJoqIAQABAAAANUnAEAIAAgAAAAAIQAgAAAAAIQAgAAAAAAQAgACAAAAEAIAAgAAA
+                            EAIAAgAAAAAIQAgAAAAYNOWlQAhADBoH1MCAIDRyxdh/0sVGKGHnlx44rgyQLXpAAAAAHQCgAAAAIAhaSoBQgBAAAAAIAAAIQAgAAAAEACAEAAQAAAAlMFFJUAIAAgAAACqr6E
+                            ECAEAAQAAQPUtKQFCAEAAAABQcU8uPLGcmQOAEAAQAAAAJKGhBAgBAAEAAED1nVYChACAAAAAoPpOKAFCAEAAAABQcZ05AIYBIgQABAAAAAl4TgkQAgACAACA6rMNACEAIAAAA
+                            Ki6JxeeaGa2ASAEAAQAAABJeEYJEAIAAgAAgOqzDQAhANB3dygBAECx/OTHZz74xjcO1fI/HlANSuRY/nt7Mf/9tYUFCkoHAABAMT2uBJSQTgAoMB0AAAAF9JMfn1n+xjcO1fM
+                            /1lSDktEJAAWlAwAAoLh0AVBWOgGggHQAAAAU1E9+fKapC4AS0wkABaMDAACg2B5SAkpMJwAUiA4AAIAC68wCqGVOBKC8dAJAQegAAAAovkfy17IyUGI6AaAAdAAAABTcT358
+                            5oNvfOPQ3+Z/PKYalJhOABAAAACwiRBgyUBAhADAdtgCAABQHjEQ0FYAys52ABgRHQAAACXRGQh4Lv/jH6kGJacTAAQAAABsEAL8wqkACAGAXnxMCQAAyudPZ//sdSEAFfHQkw
+                            tPHFcGGDwzAAAAyulwZh4A1WAmAAgAAABYz5MLTywLARACAFthCwAAQInli6Z6/nZKJagI2wFggAwBBAAosZ/8+EwzBqnlfzymGlSAwYAgAAAA4DYhwJIQACEAIAAAABACgBA
+                            AEAAAAAgBQAgAAgAAAIQAIAQAAQAAAEIAEAKAAAAAACEACAFAAAAAgBAAhAAgAAAAQAgAQgAQAAAAIARACAAIAAAAEAIgBAAEAAAAQgAQAoAAAAAAIQAIAUAAAACAEACEACAA
+                            AAD43+zdzW0bRxiAYdJpgKrAdAd0AYaoY05OKjDVQXQkAUIxCJBHSxWQ7kCuwFSSQ44sge6A6SAz0QqRrR+TkiztfvM8wGITIEDsj7zMy9lZRAAQAUAAAABABAARAAQAAABEA
+                            BABQAAAAEAEABEABAAAAEQAEAFAAAAAQARABAABAAAAEUAEQAQAAQAAABEARAAQAAAAEAFABAABAAAAEQBEABAAAAAQAUAEAAEAAAARAEQAEAAAABABQAQAAQAAABEARAAQAA
+                            AAEAEQAUAAAAAAEQARAAQAAABEABABQAAAAEAEABEABAAAAEQAEAFAAAAAQAQAEQAEAAAARAAQAUAAAABABAARAAQAAABEABABEAAAAEAEABEAAQAAAEQARAAQAAAAQARABAA
+                            BAAAAEQBEABAAAAAQAUAEAAEAAAARAEQAEAAAABABQAQAAQAAABEARAAEAAAAEAFABEAAAAAAEQBEAAQAAAAQARABRAAEAAAAEAEQAUAAAABABBABEAFAAAAAQAQAEQAEAAAAR
+                            AAQAUAAAABABAARAAHACAAAEAFABEAAAAAAEQBEAAQAAAAQAUAEQAAAAAARAEQABAAAABABEAFAAAAAABEAEQAEAAAARAAQAUAAAABABAARAAQAAABEABABEAAAAEAEABEAAQA
+                            AAEQAEAEQAAAAQAQAEQABAAAARAAQARAAAABABEAEEAEQAAAAQARABAABAAAAEUAEQAQAAQAAABEARAAEAAAAEAFABEAAAAAAEQBEAAQAAAAQAUAEoLbaRgAAQHTD0XiQbnOTII
+                            iD2XSyNAYEAAAAEAGIbVNFADsBEAAAAEAEoIAI8Go2nWyMgm29MAIAAEqRFkuLdDs0CQLopOvzcDTuGAUCAAAAiADE1kvXB2NgW94CAABAcbwdgEgRwJsB2JYzAAAAKJYzAQgin
+                            wPwejadrI2Cu3gEAACAYnkcgCDyOQBCFt/lEQAAAIrmcQCC6Kbv8T/p+/y3UXAbjwAAAEDL4wCE4NWA3MkjAAAA0PI4ACHkRwG8FYBb2QEAAABX2AlAAPlAQG8F4Bo7AAAA4Ao7
+                            AQjALgBu5BBAAAD4hoMBabh8IOB5+h6vjYKr7AAAAIAb2AlAwx0bAd9yBgAAANzBmQA0WH4jwNoYuGQHAAAA3MFOABrMLgC+YgcAAABswU4AGmpvNp1sjIHMDgAAANiCnQA01MA
+                            IEAAAAEAEIL53RsAljwAAAMCOPA5AwzgMkP/YAQAAADuyE4CGGRgBAgAAAIgAxPfWCMg8AgAAAA/gcQAawmMA2AEAAAAPYScADdE3AgQAAAAQAYhv3wgQAAAAQAQgvr4R4AwAAA
+                            B4RM4EoMb2ZtPJxhjKZQcAAAA8IjsBqLGeEQgAAACACEB8fSMQAAAAABGA+F4agQAAAACIAMTXNQIBAAAAEAGIzxkAAgAAACACUICOEQgAAACACEABhqOxCCAAAAAAIgAF8BiAA
+                            AAAAIgAgAAAAACIAIAAAAAAiACAAAAAAIgAgAAAAAAigEkAAgAAAIgAAAIAAACIAAACAAAAiAAASdsIAACgXoaj8SDd5ibBY5tNJ9aABbMDAAAA6rdIW7TsBAAEAAAAEAHgHtZG
+                            IAAAAAAiAAIAAgAAACACEMDKCAQAAABABCC+L0YgAAAAACIA8dkBUDivgAAAgAbxikDuyysAsQMAAACatYhbtOwEYHd+/UcAAAAAEYACLI0AAQAAAEQA4js3AgQAAAAQAYhvaQQIA
+                            AAAIAIQ21n6nmyMAQEAAABEAGKz/R8BAAAARAAKsDACBAAAABABiM32fwQAAAAQASjAJyPgUtsIAAAgnuFoPEi3uUkUbTObTvaMgUt2AAAAQEB2ApCcGgECAAAAiADEtzACBAAAABABCL74T5/92hgQAAAAQAQgtvdGgAAAAAAiALH59R8BAAAARAARILhNuo6MAQEAAABEABEgttP0GW+MgZu0jQAAAMozHI0H6TY3iVDWafH/yhi4jR0AAABQIDsBQvJ5IgAAAAAiQHAn6fNcGgMCAAAAIALEtW557R9b+MkIAACgbH/9+cfqzZv9L+kffzGNRjrw2j8EAAAAQASI7Sgt/s+MAQEAAAAQAeJapMX/0BgQAAAAABEgrlVa/P9sDOzCIYAAAMBXHAxY/8V/ug6MgV3ZAQAAAFxjJ0BtbdL1q0P/EAAAAAARIPbiP5/4vzIKBAAAAEAEsPgHAQAAABABLP4RAAAAAEQAi38EAAAAQAQQASz+EQAAAAARAIt/BAAAAEAEwOIfAQAAABABsPhHAAAAAEQAi38QAAAAABHA4h8EAAAAQASw+IcXRgAAADxUWrwu8iK2WsyyvZXFP0+lbQQAAMBjGY7GvXT7nK6OaWy9+BdNEAAAAIBGRoBOFQF6pnGrRVr4HxoDAgAAABAhBMzTbWAS1xylxf+JMSAAAAAAkSJAPhgwhwCPBFxs+T/0vD/PxSGAAADAD5MWu2fp9jpdy8JHkX/xd9gfz8oOAAAA4EkMR+Pf0u24VdZugLzgz1v+l74BCAAAAEBJESAv/j+04p8NkE/2P00L/9996ggAAABAySGgV4WAfsC/Xt7u/97r/RAAAAAA/g8BOQAcBwgBebF/Vi381z5ZBAAAAICbQ0C3CgGDhv3R82L/Y7pO/OKPAAAAALB9COhUEeBduno1/qPmX/s/Vm85AAEAAADgATGgW8WAtzWJAXmx/ynf/dqPAAAAAPDjYkA/XfvVvfsE/9tl6+I1fud+6UcAAAAAeJ4gkB8V6FUx4GUVBPK/d+650M/OWxfP9K/Sgn9lyggAAAAA9Q8E/e/8Jyvb+AEAAAAAAAAAAA
+                            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                            AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIJJ/BRgA5Sh1InQB5t4AAAAASUVORK5CYII=" style="width:30px; margin-left:0.6em;margin-right:0.6em;">
+                    </div>
+
+
+                    <div id="search-results-container">
                 </div>
+
                 <div class="vis-verticalScroller-End"></div>
             </div>
-            <!-- App Favourites List END -->
         </div>
-        <!-- App Favourite And Links END -->
     </div>
 </div>
 <div class="vis-apanel-busy" id="divfeedbsy" style="width: 98%; height: 98%; text-align: center; position: relative; visibility: hidden; z-index: 6;"></div>
 <script type="text/x-kendo-template" id="backgroundColor-template">
-       <select id='templateTool' style='width:90px'><option value=''>none</option><option value='\#ff9'>yellow</option><option value='\#dfd'>green</option> <option value='\#2424E0'>Blue</option> <option value='\#E04324'>Red</option></select>
+    <select id='templateTool' style='width:90px'><option value=''>none</option><option value='\#ff9'>yellow</option><option value='\#dfd'>green</option> <option value='\#2424E0'>Blue</option> <option value='\#E04324'>Red</option></select>
 </script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#search_text").keyup(function () {
+            var search = $(this).val();
+            if (search != "") {
+                $.ajax({
+                    type: "POST",
+                    url: VIS.Application.contextUrl + "VIS/Common/SearchCustomerData",
+                    data: { search: search },
+                    datatype: "html",
+                    success: function (data) {
+                        var len = data.length;
+                        data = JSON.parse(data);
+                        var trHTML = '';
+                        if (len > 2) {
+                            for (var i = 0; i < len; i++) {
+                                var id = data[i].Id;
+                                var title = data[i].Title;
+                                var firstname = data[i].FirstName;
+                                var lastname = data[i].LastName;
+                                var gender = data[i].Gender;
+                                var bdate = data[i].BDate;
+                                trHTML += '<p id = "' + id + '" ondblclick="clickme(this.id);">' + title + '  ' + firstname + "   " + lastname + "   " + gender + "   " + bdate + " </p>";
+                                $('#search-results-container').html(trHTML);
+                            }
+                            
+
+                        }
+                        else {
+                            trHTML = "No Matching Results :(";
+                            $('#search-results-container').html(trHTML);
+                        }
+
+                    },
+                    error: function (eror) {
+                        console.log(eror);
+                    }
+                });
+            }
+           else {
+                 trHTML = "Search";
+                $('#search-results-container').html(trHTML);
+            } 
+        });
+
+    });
+</script>
+
+<script type="text/javascript">
+    function clickme(id) {
+        window.location = 'Areas/VIS/Scripts/app/forms/CustomerFormJs.js';
+        alert(id);
+    }
+</script>
+</body>
+</html>

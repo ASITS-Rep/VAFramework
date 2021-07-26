@@ -22,6 +22,48 @@ namespace VIS.Controllers
 {
     public class CommonController : Controller
     {
+
+        public ActionResult LoadCustomerData()
+        {
+            Customer CUS = new Customer();
+            List<VIS_CustomerData> value = CUS.LoadCustomerData(Session["Ctx"] as Ctx);
+            return Json(JsonConvert.SerializeObject(value), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SearchCustomerData(String search)
+        {
+            Customer CUS = new Customer();
+            List<VIS_CustomerData> value = CUS.SearchCustomerData(Session["Ctx"] as Ctx, search);
+            return Json(JsonConvert.SerializeObject(value), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GettitleData()
+        {
+            Customer CUS = new Customer();
+            List<VIS_CustomerData> value = CUS.GettitleData(Session["Ctx"] as Ctx);
+            return Json(JsonConvert.SerializeObject(value), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult getgenderData()
+        {
+            Customer CUS = new Customer();
+            List<VIS_CustomerData> value = CUS.GetgenderData(Session["Ctx"] as Ctx);
+            return Json(JsonConvert.SerializeObject(value), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult Save( string title, string fname, string lname, string gender, string date)
+        {
+            if (Session["Ctx"] != null)
+            {
+                var ctx = Session["ctx"] as Ctx;
+                Customer CUS = new Customer();
+                var value = CUS.Save(ctx, title, fname, lname, gender, date);
+                return Json(new { result = value }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { result = "ok" }, JsonRequestBehavior.AllowGet);
+        }
+
+
         //
         // GET: /VIS/Common/
         public ActionResult Index()

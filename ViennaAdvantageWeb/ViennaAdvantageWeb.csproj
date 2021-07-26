@@ -54,6 +54,9 @@
       <HintPath>E:\Github\FRPT_FinancialManagment-New\ViennaAdvantageWeb\bin\FRPTSvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ModelLibrary">
+      <HintPath>Dll\ModelLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -158,10 +161,6 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">
-      <Project>{f8f980fc-83ef-4495-812e-5def569b9242}</Project>
-      <Name>ModelLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ViennaBase\ViennaBase.csproj">
       <Project>{349c7a2b-fad9-428a-bcd1-7f7262a0419d}</Project>
       <Name>ViennaBase</Name>
