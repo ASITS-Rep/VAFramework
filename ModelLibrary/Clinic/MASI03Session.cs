@@ -8,7 +8,7 @@ using VAdvantage.DataBase;
 using VAdvantage.Utility;
 using ViennaAdvantage.Model;
 
-namespace ModelLibrary.Clinic
+namespace VAdvantage.Model
 {
     class MASI03Session : X_ASI03_Session
     {

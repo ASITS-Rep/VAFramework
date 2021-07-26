@@ -27,6 +27,7 @@
         var $divTabMenuDataLoder = null;
         /* count div object of menu tab  start*/
         var $divNoticeCount = null;
+        var $divClinicSessionsCount = null;
         var $divRequestCount = null;
         var $divNotesCount = null;
         var $divAptCount = null;
@@ -743,9 +744,9 @@
                         }
                     }
                 });/* End  bind click event of Main data container of Tab Menu */
-                
+
                 var welcomeTabScroll = true;
-                
+
                 /* Start Bind Scroll of main data contianer of tab menu */
                 WelcomeTabDatacontainers.bind('scroll', function () {
                     //var thisscroll = this;
@@ -757,64 +758,64 @@
                             welcomeTabScroll = true;
                         }, 100);
                         isTabscroll = true;
-                            isTabDataRef = false;
-                            if (activeTabType == WorkflowType) {
-                                tabdataLastPage = parseInt($("#divfActivity").html());
-                                tabdatacntpage = tabdataPage * tabdataPageSize;
-                                if (tabdatacntpage <= tabdataLastPage && activity != null) {
-                                    tabdataPage += 1;
-                                    activity.AppendRecord(tabdataPage, tabdataPageSize);
-                                }
-                                else {
-                                    return;
-                                }
-                            }
-                            else if (activeTabType == NoticeType) {
-                                tabdataLastPage = parseInt($divNoticeCount.text());
-                                tabdatacntpage = tabdataPage * tabdataPageSize;
+                        isTabDataRef = false;
+                        if (activeTabType == WorkflowType) {
+                            tabdataLastPage = parseInt($("#divfActivity").html());
+                            tabdatacntpage = tabdataPage * tabdataPageSize;
+                            if (tabdatacntpage <= tabdataLastPage && activity != null) {
                                 tabdataPage += 1;
-                                if (tabdatacntpage <= tabdataLastPage) {
-                                    LoadHomeNotice();
-                                }
-                                else {
-                                    return;
-                                }
+                                activity.AppendRecord(tabdataPage, tabdataPageSize);
                             }
-                            else if (activeTabType == RequestType) {
-                                tabdataLastPage = parseInt($divRequestCount.text());
-                                tabdatacntpage = tabdataPage * tabdataPageSize;
-                                tabdataPage += 1;
-                                if (tabdatacntpage <= tabdataLastPage) {
-                                    LoadHomeRequest();
-                                }
-                                else {
-                                    return;
-                                }
+                            else {
+                                return;
                             }
-                            else if (activeTabType == AppointmentsType && window.WSP) {
-                                tabdataLastPage = parseInt($divAptCount.text());
-                                tabdatacntpage = tabdataPage * tabdataPageSize;
-                                tabdataPage += 1;
-                                if (tabdatacntpage <= tabdataLastPage) {
-                                    WSP.wspHomeMgr.doScrollWSPHome(AppointmentsType, tabdataPage, tabdataPageSize);
-                                }
-                                else {
-                                    return;
-                                }
-                            }
-                            else if (activeTabType == NotesType && window.WSP) {
-                                tabdataLastPage = parseInt($divNotesCount.text());
-                                tabdatacntpage = tabdataPage * tabdataPageSize;
-                                if (tabdatacntpage <= tabdataLastPage) {
-                                    tabdataPage += 1;
-                                    WSP.wspHomeMgr.doScrollWSPHome(NotesType, tabdataPage, tabdataPageSize);
-                                }
-                                else {
-                                    return;
-                                }
-                            }
-
                         }
+                        else if (activeTabType == NoticeType) {
+                            tabdataLastPage = parseInt($divNoticeCount.text());
+                            tabdatacntpage = tabdataPage * tabdataPageSize;
+                            tabdataPage += 1;
+                            if (tabdatacntpage <= tabdataLastPage) {
+                                LoadHomeNotice();
+                            }
+                            else {
+                                return;
+                            }
+                        }
+                        else if (activeTabType == RequestType) {
+                            tabdataLastPage = parseInt($divRequestCount.text());
+                            tabdatacntpage = tabdataPage * tabdataPageSize;
+                            tabdataPage += 1;
+                            if (tabdatacntpage <= tabdataLastPage) {
+                                LoadHomeRequest();
+                            }
+                            else {
+                                return;
+                            }
+                        }
+                        else if (activeTabType == AppointmentsType && window.WSP) {
+                            tabdataLastPage = parseInt($divAptCount.text());
+                            tabdatacntpage = tabdataPage * tabdataPageSize;
+                            tabdataPage += 1;
+                            if (tabdatacntpage <= tabdataLastPage) {
+                                WSP.wspHomeMgr.doScrollWSPHome(AppointmentsType, tabdataPage, tabdataPageSize);
+                            }
+                            else {
+                                return;
+                            }
+                        }
+                        else if (activeTabType == NotesType && window.WSP) {
+                            tabdataLastPage = parseInt($divNotesCount.text());
+                            tabdatacntpage = tabdataPage * tabdataPageSize;
+                            if (tabdatacntpage <= tabdataLastPage) {
+                                tabdataPage += 1;
+                                WSP.wspHomeMgr.doScrollWSPHome(NotesType, tabdataPage, tabdataPageSize);
+                            }
+                            else {
+                                return;
+                            }
+                        }
+
+                    }
                     //}, 200));
                 });
                 /* End Bind Scroll of main data contianer of tab menu    */
@@ -1332,6 +1333,75 @@
             });
         }
         /* End Request */
+
+        function LoadClinicSessions() {
+            isTabAjaxBusy = true;
+            $divTabMenuDataLoder.show();
+            $.ajax({
+                url: VIS.Application.contextUrl + 'ClinicSessions/GetJSONClinicSessions',
+                data: { "pagesize": tabdataPageSize, "page": tabdataPage, "isTabDataRef": isTabDataRef },
+                type: 'GET',
+                datatype: 'json',
+                success: function (result) {
+                    var data = JSON.parse(result.data);
+                    var str = "";
+                    var dbdata = null;
+                    if (data.length > 0) {
+                        if (activeTabType == ClinicSessionsType) {
+                            tabdataLastPage = parseInt(result.count);
+                            $divClinicSessionsCount.empty();
+                            $divClinicSessionsCount.show();
+                            $hAlrtTxtTypeCount.empty();
+                            $divClinicSessionsCount.text(result.count);
+                            $hAlrtTxtTypeCount.text(result.count);
+                        }
+                        for (var s in data) {
+                            if (data[s].CDate != null && data[s].CDate != "") {
+                                var cd_ = new Date(data[s].CDate);
+                                dbdate = Globalize.format(cd_, "F", Globalize.cultureSelector);
+                            }
+
+                            var divtitle_ = "";
+                            var title_ = data[s].PatientName;
+                            if (title_.length <= 100) {
+                                divtitle_ = "<pre><strong style='color:#666666' data-vishomercrd='title' id='" + data[s].AD_Note_ID + "'>" + VIS.Utility.encodeText(data[s].Title) + "</strong></pre>";
+                            }
+                            else {
+                                divtitle_ = "<pre>"
+                                    + "<strong  id='snoticetitle_" + data[s].ASI03_Session_ID + "'  style='color:#666666;' >" + VIS.Utility.encodeText(data[s].PatientName) + "...</strong>"
+                                    + "<strong id='snoticedesc_" + data[s].ASI03_Session_ID + "' style='display:none; color:#666666;'>" + VIS.Utility.encodeText(data[s].DepartmentName) + "...</strong> "
+                                    + "<span id='snoticemore_" + data[s].ASI03_Session_ID + "' data-vishomercrd='more' style='color:rgba(var(--v-c-primary), 1); float:right;height:20px'>" + VIS.Msg.getMsg("more") + "</span>"
+                                    + "<span id='snoticeless_" + data[s].ASI03_Session_ID + "' data-vishomercrd='less' style='display:none; color:rgba(var(--v-c-primary), 1); float:right;height:20pxvis-feedTitleBar'>" + VIS.Msg.getMsg("less") + "</span>"
+                                    + "</pre>";
+                            }
+
+                            str += "<div data-vishomercrd='view-recrd-cntainer' id='divrecdcntnr_" + data[s].ASI03_Session_ID + "' class='vis-activityContainer'>"
+                                + " <div class='vis-feedTitleBar'>";
+
+                            str += " <div class='vis-feedTitleBar-buttons'>"
+                                + "  <ul>";
+                            //if (data[s].SpecialTable)
+                            //{
+                            //    str += "<li data-vishomercrd='lispecial'><a data-vishomercrd='lispecial1' href='javascript:void(0)' id='" + data[s].Record_ID + "|" + data[s].ProcessTableName + "|" + data[s].ProcessWindowID + "' data-vishomercrd='SpecialTable' title='" + VIS.Msg.getMsg("ShowNotice") + "' class='vis-processZoomIcon vis-icon-check'> title='" + VIS.Msg.getMsg("ShowNotice") + "'</a></li>"
+                            //}
+
+                            // Renaming of Approve highlight to Acknowledge under notification
+                            //str += "<li data-vishomercrd='liapprove'><a href='javascript:void(0)' data-vishomercrd='approve'  id=" + data[s].AD_Note_ID + "  title='" + VIS.Msg.getMsg("Acknowledge") + "' class='vis vis-markx'></a></li>"
+                            //    + "<li data-vishomercrd='liview'><a href='javascript:void(0)' data-vishomercrd='view' id=" + data[s].AD_Note_ID + "|" + data[s].TableName + "|" + data[s].AD_Window_ID + "|" + data[s].Record_ID + " title='" + VIS.Msg.getMsg("View") + "' class='vis vis-find'></a></li>"
+                            //    + "</ul>"
+                            //    + "  </div>"
+                            //    + "</div>"
+                            //    + "<div data-vishomercrd='more-details' id=" + data[s].AD_Note_ID + " class='vis-feedDetails'>"
+                            //    + divtitle_
+                            //    + " <p class='vis-feedDateTime'>" + VIS.Utility.encodeText(dbdate) + "</p>"
+                            //    + " </div>"
+                            //    + " </div>"
+
+                        }
+                    }
+                }
+            });
+        }
 
         /* Start  Notice */
         function LoadHomeNotice() {
@@ -1893,6 +1963,21 @@
             });
         }
 
+        function setClinicSess() {
+            $.ajax({
+                url: VIS.ClinicSessions + 'ClinicSessionsController/EnterPatient',
+                data: { "ASI03_Session_ID": 1000000 },
+                type: 'POST',
+                datatype: 'json',
+                success: function (result) {
+                    var data = JSON.parse(result);
+                    console.log(data)
+                    alert("Success")
+
+                }
+            });
+        }
+
         $('#vis_appInfoWindow').click(function () {
             VIS.InfoMenu.show($(this));
         });
@@ -1909,6 +1994,8 @@
             BindMenuClick: BindMenuClick,
             getActiveTab: getActiveTab
         }
+
+        
 
     };
     VIS.HomeMgr = HomeMgr();

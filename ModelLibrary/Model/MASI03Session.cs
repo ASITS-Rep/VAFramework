@@ -6,17 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using VAdvantage.DataBase;
 using VAdvantage.Utility;
-using ViennaAdvantage.Model;
 
-namespace VAdvantage.Model
+namespace ViennaAdvantage.Model
 {
-    class MASI03Patient : X_ASI03_Patient
+    public class MASI03Session : X_ASI03_Session
     {
-        public MASI03Patient(Ctx ctx, int X_ASI03_Patient, Trx trxName)
-         : base(ctx, X_ASI03_Patient, trxName)
+        public MASI03Session(Ctx ctx, int X_ASI03_Session, Trx trxName)
+         : base(ctx, X_ASI03_Session, trxName)
         {
         }
-        public MASI03Patient(Ctx ctx, DataRow rs, Trx trxName)
+        public MASI03Session(Ctx ctx, DataRow rs, Trx trxName)
             : base(ctx, rs, trxName)
         {
         }

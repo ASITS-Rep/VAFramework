@@ -5,12 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using VAdvantage.Utility;
-using VIS.Areas.VIS.Helpers;
-using VIS.Filters;
 using VIS.Helpers;
+using VIS.Filters;
 using VIS.Models;
 
-namespace VIS.Areas.VIS.Controllers
+namespace VIS.Controllers
 {
     public class ClinicSessionsController : Controller
     {
@@ -26,13 +25,13 @@ namespace VIS.Areas.VIS.Controllers
         [AjaxSessionFilterAttribute]
         public JsonResult GetJSONClinicSessions(int pagesize, int page, Boolean isTabDataRef)
         {
-            List<HomeClinicSessions> lst = null;
+            List<HomeClinic> lst = null;
             int count = 0;
             string error = "";
             if (Session["ctx"] != null)
             {
                 objClinicHelp = new ClinicHelper();
-                lst = new List<HomeClinicSessions>();
+                lst = new List<HomeClinic>();
                 Ctx ct = Session["ctx"] as Ctx;
                 if (isTabDataRef)
                 {
@@ -46,6 +45,17 @@ namespace VIS.Areas.VIS.Controllers
                 error = "Session Expired";
             }
             return Json(new { count = count, data = JsonConvert.SerializeObject(lst), error = error }, JsonRequestBehavior.AllowGet);
+        }
+
+        [AjaxAuthorizeAttribute]
+        [AjaxSessionFilterAttribute]
+        [HttpPost]
+        public JsonResult EnterPatient(int ASI03_Session_ID)
+        {
+            objClinicHelp = new ClinicHelper();
+            Ctx ct = Session["ctx"] as Ctx;
+            var res = objClinicHelp.EnterPatient(ct, ASI03_Session_ID);
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
     }
 }

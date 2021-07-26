@@ -187,9 +187,6 @@
     <Compile Include="Clinic\MASI03Department.cs" />
     <Compile Include="Clinic\MASI03Patient.cs" />
     <Compile Include="Clinic\MASI03Session.cs" />
-    <Compile Include="Clinic\X_ASI03_Department.cs" />
-    <Compile Include="Clinic\X_ASI03_Patient.cs" />
-    <Compile Include="Clinic\X_ASI03_Session.cs" />
     <Compile Include="CM\CacheClearAll.cs" />
     <Compile Include="CM\CacheClearServer.cs" />
     <Compile Include="CM\CacheHandler.cs" />
@@ -381,6 +378,9 @@
     <Compile Include="ModelAD\MActionLog.cs" />
     <Compile Include="ModelAD\MAppointment.cs" />
     <Compile Include="ModelAD\MAppointmentsInfo.cs" />
+    <Compile Include="Model\MASI03Department.cs" />
+    <Compile Include="Model\MASI03Patient.cs" />
+    <Compile Include="Model\MASI03Session.cs" />
     <Compile Include="ModelAD\MAssignCriteria.cs" />
     <Compile Include="ModelAD\MAssignLog.cs" />
     <Compile Include="ModelAD\MAssignSet.cs" />
@@ -451,6 +451,9 @@
     <Compile Include="ModelAD\X_AD_UserHomePageSetting.cs" />
     <Compile Include="ModelAD\X_AD_WF_Recipient.cs" />
     <Compile Include="ModelAD\X_AD_WindowAction.cs" />
+    <Compile Include="Model\X_ASI03_Department.cs" />
+    <Compile Include="Model\X_ASI03_Patient.cs" />
+    <Compile Include="Model\X_ASI03_Session.cs" />
     <Compile Include="ModelAD\X_CM_Subscribe.cs" />
     <Compile Include="Model\MAccountGroupBatch.cs" />
     <Compile Include="Model\MAssignAcctSchema.cs" />

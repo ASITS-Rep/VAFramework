@@ -8,7 +8,7 @@ using VAdvantage.DataBase;
 using VAdvantage.Utility;
 using ViennaAdvantage.Model;
 
-namespace ModelLibrary.Clinic
+namespace VAdvantage.Model
 {
     class MASI03Department : X_ASI03_Department
     {

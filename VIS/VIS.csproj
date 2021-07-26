@@ -856,7 +856,6 @@
     <Compile Include="Areas\VIS\DataContracts\SqlParams.cs" />
     <Compile Include="Areas\VIS\DataContracts\ThemeData.cs" />
     <Compile Include="Areas\VIS\DataContracts\WindowData.cs" />
-    <Compile Include="Areas\VIS\DBase.cs" />
     <Compile Include="Areas\VIS\DBase\DB.cs" />
     <Compile Include="Areas\VIS\Filters\AjaxAuthorizeAttribute.cs" />
     <Compile Include="Areas\VIS\Filters\AjaxSessionFilterAttribute.cs" />

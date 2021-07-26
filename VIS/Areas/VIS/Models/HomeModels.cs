@@ -139,8 +139,8 @@ namespace VIS.Models
 
     #endregion
 
-    #region
-    public class HomeClinicSessions
+    #region Sessions
+    public class HomeClinic
     { 
         public int ASI03_Session_ID { get; set; }
         public int ASI03_Department_ID { get; set; }
@@ -149,6 +149,7 @@ namespace VIS.Models
         public string DepartmentName { get; set; }
         public DateTime ASI03_Startdate { get; set; }
         public DateTime ASI03_EndDate { get; set; }
+        public bool ASI03_isPatEnter { get; set; }
 
     }
     #endregion

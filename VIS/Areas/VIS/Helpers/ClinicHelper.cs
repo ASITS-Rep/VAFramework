@@ -6,7 +6,6 @@ using VAdvantage.Model;
 using VAdvantage.Utility;
 using System.Data;
 using VIS.Models;
-using VIS.DBase;
 using System.Text;
 using VIS.DataContracts;
 using System.Text.RegularExpressions;
@@ -15,8 +14,9 @@ using System.IO;
 using System.Web.Hosting;
 using VAdvantage.Classes;
 using DB = VIS.DBase.DB;
+using ViennaAdvantage.Model;
 
-namespace VIS.Areas.VIS.Helpers
+namespace VIS.Helpers
 {
     public class ClinicHelper
     {
@@ -70,9 +70,9 @@ namespace VIS.Areas.VIS.Helpers
             return scount;
         }
 
-        public List<HomeClinicSessions> getClinicSessions(Ctx ctx, int PageSize, int page)
+        public List<HomeClinic> getClinicSessions(Ctx ctx, int PageSize, int page)
         {
-            List<HomeClinicSessions> listSessions = new List<HomeClinicSessions>();
+            List<HomeClinic> listSessions = new List<HomeClinic>();
             strQuery = @"Select s.ASI03_Session_ID, to_char(s.asi03_startdate, 'YYYY-MM-DD HH24:MI am') as StartTime," +
                         "to_char(s.asi03_enddate, 'YYYY-MM-DD HH24:MI am') as EndTime," +
                         "d.ASI03_Department_ID, d.name as DepartmentName, p.ASI03_Patient_ID, p.name as PatientName, rl.name, rl.value" +
@@ -86,7 +86,7 @@ namespace VIS.Areas.VIS.Helpers
             {
                 for (int i = 0; i < dsData.Tables[0].Rows.Count; i++)
                 {
-                    var Sess = new HomeClinicSessions();
+                    var Sess = new HomeClinic();
                     Sess.ASI03_Session_ID = Util.GetValueOfInt(dsData.Tables[0].Rows[i]["ASI03_Session_ID"].ToString());
                     Sess.ASI03_Department_ID = Util.GetValueOfInt(dsData.Tables[0].Rows[i]["ASI03_Department_ID"].ToString());
                     Sess.DepartmentName = Util.GetValueOfString(dsData.Tables[0].Rows[i]["DepartmentName"].ToString());
@@ -94,11 +94,28 @@ namespace VIS.Areas.VIS.Helpers
                     Sess.PatientName = Util.GetValueOfString(dsData.Tables[0].Rows[i]["PatientName"].ToString());
                     Sess.ASI03_Startdate = (DateTime)Util.GetValueOfDateTime(dsData.Tables[0].Rows[i]["StartTime"].ToString());
                     Sess.ASI03_EndDate = (DateTime)Util.GetValueOfDateTime(dsData.Tables[0].Rows[i]["EndTime"].ToString());
+                    listSessions.Add(Sess);
                 }
             }
 
                 return listSessions;
         }
-            #endregion
+        #endregion
+
+        public bool EnterPatient(Ctx ctx, int ASI03_Session_ID)
+        {
+            
+            MASI03Session objSess = new MASI03Session(ctx, ASI03_Session_ID, null);
+            objSess.SetASI03_isPatEnter(true);
+            if (objSess.Save())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
+    }
 }

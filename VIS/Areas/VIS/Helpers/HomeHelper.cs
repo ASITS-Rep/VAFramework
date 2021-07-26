@@ -300,10 +300,14 @@ namespace VIS.Helpers
 
                 #endregion
 
+                #region Sessions Count
+
+                #endregion
+
                 objHome.RequestCnt = nRequest;
                 objHome.NoticeCnt = nNotice;
                 objHome.WorkFlowCnt = nWorkFlow;
-
+                //objHome.ClinicSessionsCnt = nSessions;
                 objHome.FollowUpCnt = nTotalFollow;
                 objHome.AppointmentCnt = nTotalAppnt;
                 objHome.ToDoCnt = nTodo;

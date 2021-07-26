@@ -40,48 +40,50 @@
                 <div class="vis-welcomeScreen-Data">
                     <div class="vis-welcomeMessage">
 
-                        <h1 id="vis-userGreeting"></h1>  
+                        <h1 id="vis-userGreeting"></h1>
                         <h2 id="visusrName">@Model.UsrName</h2>
                     </div>
 
                     <div class="vis-userAvatar-Container">
                         @if (Model.UsrImage != null)
                         {
-                            <img id="imgUsrImage" alt="User Avatar" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" class="vis-userAvatar-Large"  src="data:image/jpg;base64,@Model.UsrImage" />
+                            <img id="imgUsrImage" alt="User Avatar" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "UserImage")" class="vis-userAvatar-Large" src="data:image/jpg;base64,@Model.UsrImage" />
                         }
                         else
                         {
                             <i id="imgUsrImage" class="vis-userAvatar-Large vis vis-user"></i>
-                            
+
                         }
                         @*<input type="hidden" id="hdfUserImage" value="@Model.UsrImage" />*@
                     </div>
-                     <div class="text-center vis-change-picture-wrap">
-                        <label for="vis-file-input"  class="vis-file-label">
+                    <div class="text-center vis-change-picture-wrap">
+                        <label for="vis-file-input" class="vis-file-label">
                             <span class="vis-change-picture-ico vis vis-pencil"></span>@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "ChangePicture")
                             <p>Ibrahim Edited</p>
+
                         </label>
                         <input id="vis-file-input" title=" " class="vis-change-pic-input" type="file" accept="image/*" />
                     </div>
+                    <button onclick="setClinicSess()">Enter Patient</button>
                     <!--<div class="vis-status">
-                            
-                                
-                             @if (Model.UsrStatus != null)
-                             {
-                            <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:visible;">@Model.UsrStatus</label>
-                            <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:collapse;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
-                             }
-                             else
-                             {
-                            <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:visible;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
-                             <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:collapse;">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")</label>
-                             }
-<img  id="vis-img-OKStatus" src="~/Areas/VIS/Images/tick.png" class="vis-okStatus" style="visibility:collapse;"/>
-                                <img id="vis-img-CancelStatus" src="~/Areas/VIS/Images/cancel.png" class="vis-cancelStatus" style="visibility:collapse;"/>
-                        </div>-->
+
+
+                                 @if (Model.UsrStatus != null)
+                                 {
+                                <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:visible;">@Model.UsrStatus</label>
+                                <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:collapse;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
+                                 }
+                                 else
+                                 {
+                                <input id="vis-textStatus" type="text" maxlength="2000" style="visibility:visible;" placeholder="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")"/>
+                                 <label id="vis-labelStatus" class="vis-labelStatus" style="visibility:collapse;">@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "EnterStatus")</label>
+                                 }
+    <img  id="vis-img-OKStatus" src="~/Areas/VIS/Images/tick.png" class="vis-okStatus" style="visibility:collapse;"/>
+                                    <img id="vis-img-CancelStatus" src="~/Areas/VIS/Images/cancel.png" class="vis-cancelStatus" style="visibility:collapse;"/>
+                            </div>-->
                     <!--<div style="margin-left:120px">
-                        <input type="file" id="ImgUpload" name="Change Picture"/>
-                    </div>-->
+        <input type="file" id="ImgUpload" name="Change Picture"/>
+    </div>-->
 
                 </div>
                 <!-- App Welcome Screen Profile END -->
@@ -120,8 +122,8 @@
                         <a data-vishome="workflow" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "workflow")"><i class="vis vis-userfeed"></i></a>
                     </li>
                     <li>
-                        <div id="divfActivity" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "sessions")" class="vis-welcomeScreenTab-notificationBubbles vis-feedsAlert" @GetStatus(Model.ClinicSessionsCnt)>@Model.ClinicSessionsCnt</div>
-                        <a data-vishome="sessions" href="javascript:void(0)" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "sessions")"><i class="vis vis-userfeed"></i></a>
+                        <div id="divClinicSessionsCount" class="vis-welcomeScreenTab-notificationBubbles vis-alertAlert" @GetStatus(Model.ClinicSessionsCnt)>@Model.ClinicSessionsCnt</div>
+                        <a data-vishome="clinicsessions" title="@VAdvantage.Utility.Msg.GetMsg(ViewBag.lang, "Sessions")" href="javascript:void(0)"><i class="vis vis-notice"></i></a>
                     </li>
                     <li>
                         <div id="divNoticeCount" class="vis-welcomeScreenTab-notificationBubbles vis-alertAlert" @GetStatus(Model.NoticeCnt)>@Model.NoticeCnt</div>
