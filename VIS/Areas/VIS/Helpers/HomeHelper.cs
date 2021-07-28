@@ -445,7 +445,6 @@ namespace VIS.Helpers
         public ProductsInfo getHomeProducts(Ctx ct)
         {
             List<HomeProducts> productsList = new List<HomeProducts>();
-            List<ProductsImages> productImage = new List<ProductsImages>();
             ProductsInfo productObj = new ProductsInfo();
             string _sql = @"Select wrpr.asi03_productamount as productAmount,
                             st.name as storageName,
@@ -479,7 +478,6 @@ namespace VIS.Helpers
                 dr.Close();
             }
             productObj.listProducts = productsList;
-            productObj.listProductsImages = productImage;
             return productObj;
         }
         #endregion

@@ -169,18 +169,10 @@ namespace VIS.Models
         public int StorageID { get; set; }
         public string StorageName { get; set; }
     }
-
-    //Product image
-    public class ProductsImages
-    {
-        public object ProductImage { get; set; }
-        public int AD_Image_ID { get; set; }
-    }
     //Products list
     public class ProductsInfo
     {
         public int ProductsCount { get; set; }
-        public List<ProductsImages> listProductsImages { get; set; }
         public List<HomeProducts> listProducts { get; set; }
     }
 
