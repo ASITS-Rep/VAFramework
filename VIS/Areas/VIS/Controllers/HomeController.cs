@@ -510,6 +510,22 @@ namespace VIS.Controllers
         //    return View();
         //}
 
+        #region Home Products
+        public JsonResult GetJSONProducts()
+        {
+            ProductsInfo productsInfo = null;
+            objHomeHelp = new HomeHelper();
+            if (Session["ctx"] != null)
+            {
+                Ctx ct = Session["ctx"] as Ctx;
+
+                productsInfo = new ProductsInfo();
+                productsInfo = objHomeHelp.getHomeProducts(ct);
+            }
+            return Json(JsonConvert.SerializeObject(productsInfo), JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
 
         #region Follups start
         /*----------------Folloups Strat-----------------------*/

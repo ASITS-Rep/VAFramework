@@ -441,7 +441,50 @@ namespace VIS.Helpers
         //}
         #endregion
 
-        # region Follups start
+        #region Home Products
+        public ProductsInfo getHomeProducts(Ctx ct)
+        {
+            List<HomeProducts> productsList = new List<HomeProducts>();
+            List<ProductsImages> productImage = new List<ProductsImages>();
+            ProductsInfo productObj = new ProductsInfo();
+            string _sql = @"Select wrpr.asi03_productamount as productAmount,
+                            st.name as storageName,
+                            st.ASI03_Storage_ID as storageID,
+                            p.name as productName,
+                            p.ASI03_ProductImage as productImage,
+                            p.ASI03_Product_ID as productID,
+                            u.name as unit,
+                            img.Imageurl as Image
+                    from asi03_warehouseproducts wrpr
+                    INNER JOIN ASI03_Product p on p.ASI03_Product_ID = wrpr.ASI03_Product_ID
+                    INNER JOIN C_UOM u on wrpr.C_UOM_ID = u.C_UOM_ID
+                    INNER JOIN asi03_warehouse st on st.ASI03_Warehouse_ID = wrpr.ASI03_Warehouse_ID
+                    INNER JOIN AD_Image img on img.AD_Image_ID = p.ASI03_ProductImage";
+            var dr = DB.ExecuteReader(_sql);
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    HomeProducts product = new HomeProducts();
+                    product.ProductAmount = Util.GetValueOfInt(dr["productAmount"]);
+                    product.Unit = Util.GetValueOfString(dr["unit"]);
+                    product.ProductID = Util.GetValueOfInt(dr["productID"]);
+                    product.ProductName = Util.GetValueOfString(dr["productName"]);
+                    product.StorageID = Util.GetValueOfInt(dr["storageID"]);
+                    product.StorageName = Util.GetValueOfString(dr["storageName"]);
+                    product.ProductImage = Util.GetValueOfString(dr["Image"]);
+
+                    productsList.Add(product);
+                }
+                dr.Close();
+            }
+            productObj.listProducts = productsList;
+            productObj.listProductsImages = productImage;
+            return productObj;
+        }
+        #endregion
+
+        #region Follups start
 
         public int getFllCnt(Ctx ctx)
         {
