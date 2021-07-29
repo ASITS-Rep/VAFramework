@@ -441,7 +441,154 @@ namespace VIS.Helpers
         //}
         #endregion
 
-        # region Follups start
+        #region Home Products
+        public ProductsInfo getHomeProducts(Ctx ct)
+        {
+            List<HomeProducts> productsList = new List<HomeProducts>();
+            ProductsInfo productObj = new ProductsInfo();
+            string _sql = @"Select wrpr.asi03_productamount as productAmount,
+                            st.name as storageName,
+                            st.ASI03_Storage_ID as storageID,
+                            p.name as productName,
+                            p.ASI03_ProductImage as productImage,
+                            p.ASI03_Product_ID as productID,
+                            u.name as unit,
+                            img.Imageurl as Image
+                    from asi03_warehouseproducts wrpr
+                    INNER JOIN ASI03_Product p on p.ASI03_Product_ID = wrpr.ASI03_Product_ID
+                    INNER JOIN C_UOM u on wrpr.C_UOM_ID = u.C_UOM_ID
+                    INNER JOIN asi03_warehouse st on st.ASI03_Warehouse_ID = wrpr.ASI03_Warehouse_ID
+                    INNER JOIN AD_Image img on img.AD_Image_ID = p.ASI03_ProductImage";
+            var dr = DB.ExecuteReader(_sql);
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    HomeProducts product = new HomeProducts();
+                    product.ProductAmount = Util.GetValueOfInt(dr["productAmount"]);
+                    product.Unit = Util.GetValueOfString(dr["unit"]);
+                    product.ProductID = Util.GetValueOfInt(dr["productID"]);
+                    product.ProductName = Util.GetValueOfString(dr["productName"]);
+                    product.StorageID = Util.GetValueOfInt(dr["storageID"]);
+                    product.StorageName = Util.GetValueOfString(dr["storageName"]);
+                    product.ProductImage = Util.GetValueOfString(dr["Image"]);
+
+                    productsList.Add(product);
+                }
+                dr.Close();
+            }
+            productObj.listProducts = productsList;
+            return productObj;
+        }
+        #endregion
+
+        #region Home Products Transactions
+        public ProductsTrnsInfo GetProductsTrns(Ctx ctx)
+        {
+            int trnsCount = 0;
+            List<HomeProductsTrns> homeProductsTrns = new List<HomeProductsTrns>();
+            ProductsTrnsInfo trnsObj = new ProductsTrnsInfo();
+            string _sql = @"select trns.ASI03_ProductTransaction_ID as transactionID,
+                                    trns.ASI03_ProductAmount as productAmount,
+                                    p.Name as productName,
+                                    trns.ASI03_Product_ID as productID,
+                                    fs.Name as fromStorageName,
+                                    trns.ASI03_FromStorage as fromStorageID,
+                                    ts.Name as toStorageName,
+                                    trns.ASI03_ToStorage as toStorageID,
+                                    u.Name as Unit
+                            from ASI03_ProductTransaction trns
+                            INNER JOIN ASI03_Product p on p.ASI03_Product_ID = trns.ASI03_Product_ID
+                            INNER JOIN ASI03_Storage fs on fs.ASI03_Storage_ID = trns.ASI03_FromStorage
+                            INNER JOIN ASI03_Storage ts on ts.ASI03_Storage_ID = trns.ASI03_ToStorage
+                            INNER JOIN C_UOM u on u.C_UOM_ID = trns.C_UOM_ID";
+            string _sqlCount = @"select COUNT(ASI03_ProductTransaction_ID) from ASI03_ProductTransaction";
+            var dr = DB.ExecuteReader(_sql);
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    HomeProductsTrns trns = new HomeProductsTrns();
+                    trns.ASI03_ProductTransaction_ID = Util.GetValueOfInt(dr["transactionID"]);
+                    trns.ASI03_ProductAmount = Util.GetValueOfInt(dr["productAmount"]);
+                    trns.Unit = Util.GetValueOfString(dr["Unit"]);
+                    trns.ASI03_Product_ID = Util.GetValueOfInt(dr["productID"]);
+                    trns.ProductName = Util.GetValueOfString(dr["productName"]);
+                    trns.FromStorageID = Util.GetValueOfInt(dr["fromStorageID"]);
+                    trns.FromStorageName = Util.GetValueOfString(dr["fromStorageName"]);
+                    trns.ToStorageID = Util.GetValueOfInt(dr["toStorageID"]);
+                    trns.ToStorageName = Util.GetValueOfString(dr["toStorageName"]);
+                    homeProductsTrns.Add(trns);
+                }
+                dr.Close();
+            }
+            trnsCount = Util.GetValueOfInt(DB.ExecuteScalar(_sqlCount, null, null));
+            trnsObj.listProductsTrns = homeProductsTrns;
+            trnsObj.ProductsTrnsCount = trnsCount;
+            return trnsObj;
+        }
+        #endregion
+
+        #region Select Lists
+        public HomeSelectLists GetSelectLists(Ctx ct)
+        {
+            List<ProductsList> productsList = new List<ProductsList>();
+            List<UnitsList> unitsList = new List<UnitsList>();
+            List<FromStorageList> fromStorageLists = new List<FromStorageList>();
+            List<ToStorageList> toStorageLists = new List<ToStorageList>();
+            HomeSelectLists listsObj = new HomeSelectLists();
+            string _prdsql = @"select ASI03_Product_ID, Name from ASI03_Product where IsActive='Y'";
+            string _unitsql = @"select C_UOM_ID, Name from C_UOM where IsActive='Y'";
+            string _storagesql = @"select ASI03_Storage_ID, Name from ASI03_Storage where IsActive='Y'";
+            var dr = DB.ExecuteReader(_prdsql);
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    ProductsList product = new ProductsList();
+                    product.ASI03_Products_ID = Util.GetValueOfInt(dr["ASI03_Product_ID"]);
+                    product.ProductName = Util.GetValueOfString(dr["Name"]);
+                    productsList.Add(product);
+                }
+                dr.Close();
+            }
+            dr = DB.ExecuteReader(_unitsql);
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    UnitsList unit = new UnitsList();
+                    unit.C_UOM_ID = Util.GetValueOfInt(dr["C_UOM_ID"]);
+                    unit.Unit = Util.GetValueOfString(dr["Name"]);
+                    unitsList.Add(unit);
+                }
+                dr.Close();
+            }
+            dr = DB.ExecuteReader(_storagesql);
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    FromStorageList fromStorage = new FromStorageList();
+                    ToStorageList toStorage = new ToStorageList();
+                    fromStorage.ASI03_Storage_ID = Util.GetValueOfInt(dr["ASI03_Storage_ID"]);
+                    fromStorage.FromStorageName = Util.GetValueOfString(dr["Name"]);
+                    toStorage.ASI03_Storage_ID = Util.GetValueOfInt(dr["ASI03_Storage_ID"]);
+                    toStorage.ToStorageName = Util.GetValueOfString(dr["Name"]);
+                    fromStorageLists.Add(fromStorage);
+                    toStorageLists.Add(toStorage);
+                }
+                dr.Close();
+            }
+            listsObj.ProductsLists = productsList;
+            listsObj.UnitsLists = unitsList;
+            listsObj.FromStorageLists = fromStorageLists;
+            listsObj.ToStorageLists = toStorageLists;
+            return listsObj;
+        }
+        #endregion
+
+        #region Follups start
 
         public int getFllCnt(Ctx ctx)
         {

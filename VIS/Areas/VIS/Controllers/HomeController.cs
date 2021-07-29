@@ -510,6 +510,58 @@ namespace VIS.Controllers
         //    return View();
         //}
 
+        #region Home Products
+        public JsonResult GetJSONProducts()
+        {
+            ProductsInfo productsInfo = null;
+            objHomeHelp = new HomeHelper();
+            if (Session["ctx"] != null)
+            {
+                Ctx ct = Session["ctx"] as Ctx;
+                productsInfo = objHomeHelp.getHomeProducts(ct);
+            }
+            return Json(JsonConvert.SerializeObject(productsInfo), JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region ProductsTransactions
+        public JsonResult GetProductsTrns()
+        {
+            ProductsTrnsInfo homeProductsTrns = null;
+            string error = "";
+            if (Session["ctx"] != null)
+            {
+                objHomeHelp = new HomeHelper();
+                Ctx ct = Session["ctx"] as Ctx;
+                homeProductsTrns = objHomeHelp.GetProductsTrns(ct);
+            }
+            else
+            {
+                error = "Session Expired";
+            };
+            return Json(new { data = JsonConvert.SerializeObject(homeProductsTrns), error = error }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region Transaction Required Lists 
+        public JsonResult GetSelectLists()
+        {
+            HomeSelectLists homeSelectLists = null;
+            string error = "";
+            if (Session["ctx"] != null)
+            {
+                objHomeHelp = new HomeHelper();
+                Ctx ct = Session["ctx"] as Ctx;
+                homeSelectLists = objHomeHelp.GetSelectLists(ct);
+            }
+            else
+            {
+                error = "Session Expiered";
+            };
+            return Json(new { data = JsonConvert.SerializeObject(homeSelectLists), error = error }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
 
         #region Follups start
         /*----------------Folloups Strat-----------------------*/
