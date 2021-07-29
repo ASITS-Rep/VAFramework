@@ -102,6 +102,69 @@
                     </div>
                     <!-- App Feeds Heading END -->
                     <div id="welcomeScreenFeedsList" class="scrollerVertical">
+                        <div id="prod_trns" class="prod_trns_cont">
+                            <div class="trns_action_cont">
+                                <div class="trns_select_cont">
+                                    <select class="form-control" id="product_list"></select>
+                                    <input class="form-control" type="text" id="product_amount"/>
+                                    <select class="form-control" id="unit_list"></select>
+                                    <select class="form-control" id="from_storage_list"></select>
+                                    <select class="form-control" id="to_storage_list"></select>
+                                </div>
+                                <div class="trns_btn_cont">
+                                    <button class="btn btn-primary" onclick="AddNewTransaction()">Add</button>
+                                </div>
+                            </div>
+                            <div class="transactions_cont">
+                                <h6>Products Transactions</h6>
+                                <div id="transactions_list" class="transactions_list_cont">
+                                    <div class="transaction_record">
+                                        <div class="product_details">
+                                            <p class="d-inline text-center">1000 Kg</p>
+                                            <p class="d-inline text-center">Flour</p>
+                                        </div>
+                                        <div class="storage_details">
+                                            <p class="from_storage_text d-inline text-center">Mansoor</p>
+                                            &#8594;
+                                            <p class="to_storage_text d-inline text-center">Karada</p>
+                                        </div>
+                                    </div>
+                                    <div class="transaction_record">
+                                        <div class="product_details">
+                                            <p class="d-inline text-center">1000 Kg</p>
+                                            <p class="d-inline text-center">Flour</p>
+                                        </div>
+                                        <div class="storage_details">
+                                            <p class="from_storage_text d-inline text-center">Mansoor</p>
+                                            &#8594;
+                                            <p class="to_storage_text d-inline text-center">Karada</p>
+                                        </div>
+                                    </div>
+                                    <div class="transaction_record">
+                                        <div class="product_details">
+                                            <p class="d-inline text-center">1000 Kg</p>
+                                            <p class="d-inline text-center">Flour</p>
+                                        </div>
+                                        <div class="storage_details">
+                                            <p class="from_storage_text d-inline text-center">Mansoor</p>
+                                            &#8594;
+                                            <p class="to_storage_text d-inline text-center">Karada</p>
+                                        </div>
+                                    </div>
+                                    <div class="transaction_record">
+                                        <div class="product_details">
+                                            <p class="d-inline text-center">1000 Kg</p>
+                                            <p class="d-inline text-center">Flour</p>
+                                        </div>
+                                        <div class="storage_details">
+                                            <p class="from_storage_text d-inline text-center">Mansoor</p>
+                                            &#8594;
+                                            <p class="to_storage_text d-inline text-center">Karada</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="divTabMenuDataLoder">
                         <img height="20" width="20" src="~/Areas/VIS/Images/busy.gif" />
@@ -195,7 +258,7 @@
 <script type="text/x-kendo-template" id="backgroundColor-template">
        <select id='templateTool' style='width:90px'><option value=''>none</option><option value='\#ff9'>yellow</option><option value='\#dfd'>green</option> <option value='\#2424E0'>Blue</option> <option value='\#E04324'>Red</option></select>
 </script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+@*<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>*@
 <script>
     $(document).ready(function () {
         $.ajax({
@@ -204,12 +267,9 @@
             data: {},
             datatype: "json",
             success: function (result) {
-                console.log(result)
                 obj = JSON.parse(result)
                 let products = obj.listProducts;
-                console.log(products)
-                console.log(products[0].ProductID != null)
-                if (products[0].ProductID != null) {
+                if (products.length > 0) {
                     products.forEach(product => $("#products_wrap").append('<div id="' + product.ProductID + '" class="prod-cont"><div class="prod-image-cont"><img src="' + product.ProductImage + '" alt="' + product.ProductName + ' product image" /></div><div class="product-details"><p id="' + product.StorageID + '">' + product.StorageName + '</p><p>' + product.ProductName + '</p><p class="d-inline">' + product.ProductAmount + '</p> <span>' + product.Unit + '</span></div></div>'));
                 }
                 else {

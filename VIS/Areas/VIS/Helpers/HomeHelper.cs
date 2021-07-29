@@ -482,6 +482,53 @@ namespace VIS.Helpers
         }
         #endregion
 
+        #region Home Products Transactions
+        public ProductsTrnsInfo GetProductsTrns(Ctx ctx, int PageSize, int page)
+        {
+            int trnsCount = 0;
+            List<HomeProductsTrns> homeProductsTrns = new List<HomeProductsTrns>();
+            ProductsTrnsInfo trnsObj = new ProductsTrnsInfo();
+            string _sql = @"select trns.ASI03_ProductTransaction_ID as transactionID,
+                                    trns.ASI03_ProductAmount as productAmount,
+                                    p.Name as productName,
+                                    trns.ASI03_Product_ID as productID,
+                                    fs.Name as fromStorageName,
+                                    trns.ASI03_FromStorage as fromStorageID,
+                                    ts.Name as toStorageName,
+                                    trns.ASI03_ToStorage as toStorageID,
+                                    u.Name as Unit
+                            from ASI03_ProductTransaction trns
+                            INNER JOIN ASI03_Product p on p.ASI03_Product_ID = trns.ASI03_Product_ID
+                            INNER JOIN ASI03_Storage fs on fs.ASI03_Storage_ID = trns.ASI03_FromStorage
+                            INNER JOIN ASI03_Storage ts on ts.ASI03_Storage_ID = trns.ASI03_ToStorage
+                            INNER JOIN C_UOM u on u.C_UOM_ID = trns.C_UOM_ID";
+            string _sqlCount = @"select COUNT(ASI03_ProductTransaction_ID) from ASI03_ProductTransaction";
+            var dr = DB.ExecuteReader(_sql);
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    HomeProductsTrns trns = new HomeProductsTrns();
+                    trns.ASI03_ProductTransaction_ID = Util.GetValueOfInt(dr["transactionID"]);
+                    trns.ASI03_ProductAmount = Util.GetValueOfInt(dr["productAmount"]);
+                    trns.Unit = Util.GetValueOfString(dr["Unit"]);
+                    trns.ASI03_Product_ID = Util.GetValueOfInt(dr["productID"]);
+                    trns.ProductName = Util.GetValueOfString(dr["productName"]);
+                    trns.FromStorageID = Util.GetValueOfInt(dr["fromStorageID"]);
+                    trns.FromStorageName = Util.GetValueOfString(dr["fromStorageName"]);
+                    trns.ToStorageID = Util.GetValueOfInt(dr["toStorageID"]);
+                    trns.ToStorageName = Util.GetValueOfString(dr["toStorageName"]);
+                    homeProductsTrns.Add(trns);
+                }
+                dr.Close();
+            }
+            trnsCount = Util.GetValueOfInt(DB.ExecuteScalar(_sqlCount, null, null));
+            trnsObj.listProductsTrns = homeProductsTrns;
+            trnsObj.ProductsTrnsCount = trnsCount;
+            return trnsObj;
+        }
+        #endregion
+
         #region Follups start
 
         public int getFllCnt(Ctx ctx)

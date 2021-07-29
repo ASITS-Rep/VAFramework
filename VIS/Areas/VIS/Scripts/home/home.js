@@ -543,7 +543,7 @@
                         else if (activeTabType == NoticeType) {
                             tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
                             emptyWelcomeTabDatacontainers();;
-                            LoadHomeNotice();
+                            LoadProductsTrns();
                         }
                         else if (activeTabType == MyTaskType) {
                             tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
@@ -747,7 +747,7 @@
                                 tabdatacntpage = tabdataPage * tabdataPageSize;
                                 tabdataPage += 1;
                                 if (tabdatacntpage <= tabdataLastPage) {
-                                    LoadHomeNotice();
+                                    LoadProductsTrns();
                                 }
                                 else {
                                     return;
@@ -1306,6 +1306,28 @@
         }
         /* End Request */
 
+        /* Products Transactions */
+        function LoadProductsTrns() {
+            $.ajax({
+                url: VIS.Application.contextUrl + 'Home/GetProductsTrns',
+                data: { "pagesize": tabdataPageSize, "page": tabdataPage },
+                type: 'GET',
+                datatype: 'json',
+                success: function (result) {
+                    data = JSON.parse(result.data)
+                    console.log(data)
+                    let productTrns = data.listProductsTrns;
+                    if (productTrns > 0) {
+                        productTrns.forEach(trn => )
+                    }
+                },
+                error: function () {
+                    console.log('Faild')
+                }
+            });
+        }
+        /* Products Transactions End */
+
         /* Start  Notice */
         function LoadHomeNotice() {
             isTabAjaxBusy = true;
@@ -1574,7 +1596,7 @@
                     if (isTabAjaxBusy == false) {
                         tabdatapcount = 0, tabdataPageSize = 10, tabdataPage = 1, tabdatacntpage = 0;
                         emptyWelcomeTabDatacontainers();;
-                        LoadHomeNotice();
+                        LoadProductsTrns();
                     }
                     $workflowActivity.hide();
                     adjustDivSize();

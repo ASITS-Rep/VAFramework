@@ -3241,3 +3241,83 @@ ul.vis-userLinks-ListMenu li a i {
     border-radius: 1rem;
     flex: auto;
 }
+
+#prod_trns {
+    display: none;
+}
+
+    #prod_trns.active {
+        z-index: 2;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: flex-start;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+.trns_action_cont {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-content: center;
+    width: 100%;
+}
+
+.trns_select_cont {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+    .trns_select_cont:nth-child(1),
+    .trns_select_cont:nth-child(2),
+    .trns_select_cont:nth-child(3) {
+        margin: 0 0.25rem;
+        width: 28%;
+    }
+
+    .trns_select_cont:nth-child(4),
+    .trns_select_cont:nth-child(5) {
+        margin: 0 0.5rem;
+        width: 42%;
+    }
+
+.transactions_list_cont,
+.transaction_record {
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: start;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0.5rem;
+}
+
+.transactions_list_cont {
+    height: 100%;
+}
+
+.transaction_record {
+    height: 4rem;
+}
+
+.product_details,
+.storage_details {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.from_storage_text {
+    color: red;
+}
+
+.to_storage_text {
+    color: green;
+}

@@ -35,6 +35,7 @@ namespace VIS.Models
         public string Greeting { get; set; }
         public HomeFolloUpsInfo HomeFolloUpsInfo;
         public ProductsInfo ProductsInfo;
+        public ProductsTrnsInfo ProductsTrnsInfo;
         //Save User Image
         public int SaveUserImage(Ctx ctx, byte[] buffer, string imageName, bool isSaveInDB)
         {
@@ -178,4 +179,24 @@ namespace VIS.Models
 
     #endregion
 
+    #region Products Transactions
+    public class HomeProductsTrns
+    {
+        public int ASI03_ProductTransaction_ID { get; set; }
+        public int ASI03_Product_ID { get; set; }
+        public string ProductName { get; set; }
+        public int ASI03_ProductAmount { get; set; }
+        public string Unit { get; set; }
+        public int FromStorageID { get; set; }
+        public string FromStorageName { get; set; }
+        public int ToStorageID { get; set; }
+        public string ToStorageName { get; set; }
+    }
+    // Transactions List
+    public class ProductsTrnsInfo
+    {
+        public int ProductsTrnsCount { get; set; }
+        public List<HomeProductsTrns> listProductsTrns { get; set; }
+    }
+    #endregion
 }

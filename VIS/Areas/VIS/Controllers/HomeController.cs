@@ -518,14 +518,30 @@ namespace VIS.Controllers
             if (Session["ctx"] != null)
             {
                 Ctx ct = Session["ctx"] as Ctx;
-
-                productsInfo = new ProductsInfo();
                 productsInfo = objHomeHelp.getHomeProducts(ct);
             }
             return Json(JsonConvert.SerializeObject(productsInfo), JsonRequestBehavior.AllowGet);
         }
         #endregion
 
+        #region ProductsTransactions
+        public JsonResult GetProductsTrns(int pagesize, int page)
+        {
+            ProductsTrnsInfo homeProductsTrns = null;
+            string error = "";
+            if (Session["ctx"] != null)
+            { 
+                objHomeHelp = new HomeHelper();
+                Ctx ct = Session["ctx"] as Ctx;
+                homeProductsTrns = objHomeHelp.GetProductsTrns(ct, pagesize, page);
+            }
+            else
+            {
+                error = "Session Expired";
+            };
+            return Json(new { data = JsonConvert.SerializeObject(homeProductsTrns), error = error }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
 
         #region Follups start
         /*----------------Folloups Strat-----------------------*/
