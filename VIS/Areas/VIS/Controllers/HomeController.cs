@@ -562,6 +562,32 @@ namespace VIS.Controllers
         }
         #endregion
 
+        #region Add Transaction
+        public bool AddTrns(int prodId, int amount, int fromStorage, int toStorage, int unitId)
+        {
+            if (Session["ctx"] != null)
+            {
+                Ctx ctx = Session["ctx"] as Ctx;
+                MASI03ProductTransaction trns = new MASI03ProductTransaction(ctx, 0, null);
+                trns.SetASI03_Product_ID(prodId);
+                trns.SetASI03_ProductAmount(amount);
+                trns.SetC_UOM_ID(unitId);
+                trns.SetASI03_FromStorage(fromStorage);
+                trns.SetASI03_ToStorage(toStorage);
+                if (!trns.Save())
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            };
+            
+        }
+        #endregion
+
 
         #region Follups start
         /*----------------Folloups Strat-----------------------*/

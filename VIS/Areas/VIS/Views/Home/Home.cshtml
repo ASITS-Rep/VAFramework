@@ -52,11 +52,11 @@
                     </div>
                 </div>
                 <div class="trns_btn_cont">
-                    <button class="btn btn-primary add_btn" onclick="AddNewTransaction()">Add</button>
+                    <button id="add_trn" class="btn btn-primary add_btn" onclick="AddNewTransaction()">Add</button>
                 </div>
             </div>
             <div class="transactions_cont">
-                <h6>Products Transactions</h6>
+                <h5>Products Transactions</h5>
                 <div id="transactions_list" class="transactions_list_cont">
                     
                 </div>
@@ -160,8 +160,8 @@
                 if (storageList.length > 0) {
                     $("#from_storage_list").append('<option value="' + -1 + '">' + "Select Unit" + '</option>');
                     $("#to_storage_list").append('<option value="' + -1 + '">' + "Select Unit" + '</option>');
-                    storageList.forEach(storage => $("#from_storage_list").append('<option value="' + storage.ASI03_Storage_ID + '">' + storage.FromStorageName + '</option>'));
-                    storageList.forEach(storage => $("#to_storage_list").append('<option value="' + storage.ASI03_Storage_ID + '">' + storage.FromStorageName + '</option>'));
+                    storageList.forEach(storage => $("#from_storage_list").append('<option value="' + storage.ASI03_Warehouse_ID + '">' + storage.FromStorageName + '</option>'));
+                    storageList.forEach(storage => $("#to_storage_list").append('<option value="' + storage.ASI03_Warehouse_ID + '">' + storage.FromStorageName + '</option>'));
                 }
 
             },
@@ -170,5 +170,32 @@
             }
         });
         /* Select Lists End */
+
+        /* Add Action */
+        $("#add_trn").click(function () {
+                var data = {
+                    prodId: $('#product_list').val(),
+                    amount: $('#product_amount').val(),
+                    fromStorage: $('#from_storage_list').val(),
+                    toStorage: $('#to_storage_list').val(),
+                    unitId: $('#unit_list').val()
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: VIS.Application.contextUrl + 'Home/AddTrns',
+                    dataType: 'html',
+                    data: data,
+                    success: function (result) {
+                        console.log(result)
+                        document.location.reload()
+                    },
+                    error: function (ex) {
+
+                        alert('Faild');
+                    }
+
+                });
+            });
+        /* Add Action End */
     });
 </script>
