@@ -539,7 +539,7 @@ namespace VIS.Helpers
             HomeSelectLists listsObj = new HomeSelectLists();
             string _prdsql = @"select ASI03_Product_ID, Name from ASI03_Product where IsActive='Y'";
             string _unitsql = @"select C_UOM_ID, Name from C_UOM where IsActive='Y'";
-            string _storagesql = @"select ASI03_Storage_ID, Name from ASI03_Storage where IsActive='Y'";
+            string _storagesql = @"select ASI03_Warehouse_ID, Name from ASI03_Warehouse where IsActive='Y'";
             var dr = DB.ExecuteReader(_prdsql);
             if (dr != null)
             {
@@ -571,9 +571,9 @@ namespace VIS.Helpers
                 {
                     FromStorageList fromStorage = new FromStorageList();
                     ToStorageList toStorage = new ToStorageList();
-                    fromStorage.ASI03_Storage_ID = Util.GetValueOfInt(dr["ASI03_Storage_ID"]);
+                    fromStorage.ASI03_Warehouse_ID = Util.GetValueOfInt(dr["ASI03_Warehouse_ID"]);
                     fromStorage.FromStorageName = Util.GetValueOfString(dr["Name"]);
-                    toStorage.ASI03_Storage_ID = Util.GetValueOfInt(dr["ASI03_Storage_ID"]);
+                    toStorage.ASI03_Warehouse_ID = Util.GetValueOfInt(dr["ASI03_Warehouse_ID"]);
                     toStorage.ToStorageName = Util.GetValueOfString(dr["Name"]);
                     fromStorageLists.Add(fromStorage);
                     toStorageLists.Add(toStorage);

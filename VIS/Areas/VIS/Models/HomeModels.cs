@@ -215,13 +215,13 @@ namespace VIS.Models
 
     public class FromStorageList
     {
-        public int ASI03_Storage_ID { get; set; }
+        public int ASI03_Warehouse_ID { get; set; }
         public string FromStorageName { get; set; }
     }
 
     public class ToStorageList
     {
-        public int ASI03_Storage_ID { get; set; }
+        public int ASI03_Warehouse_ID { get; set; }
         public string ToStorageName { get; set; }
     }
     public class HomeSelectLists
