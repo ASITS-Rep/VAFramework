@@ -446,7 +446,7 @@ namespace VIS.Helpers
         {
             List<HomeProducts> productsList = new List<HomeProducts>();
             ProductsInfo productObj = new ProductsInfo();
-            string _sql = @"Select wrpr.asi03_productamount as productAmount,
+            string _sql = @"Select wrpr.ASI03_ProductAmount as productAmount,
                             st.name as storageName,
                             st.ASI03_Storage_ID as storageID,
                             p.name as productName,
@@ -454,11 +454,12 @@ namespace VIS.Helpers
                             p.ASI03_Product_ID as productID,
                             u.name as unit,
                             img.Imageurl as Image
-                    from asi03_warehouseproducts wrpr
+                    from ASI03_WarehouseProducts wrpr
                     INNER JOIN ASI03_Product p on p.ASI03_Product_ID = wrpr.ASI03_Product_ID
                     INNER JOIN C_UOM u on wrpr.C_UOM_ID = u.C_UOM_ID
                     INNER JOIN asi03_warehouse st on st.ASI03_Warehouse_ID = wrpr.ASI03_Warehouse_ID
-                    INNER JOIN AD_Image img on img.AD_Image_ID = p.ASI03_ProductImage";
+                    INNER JOIN AD_Image img on img.AD_Image_ID = p.ASI03_ProductImage
+                    Order BY wrpr.ASI03_WarehouseProducts_ID DESC";
             var dr = DB.ExecuteReader(_sql);
             if (dr != null)
             {
@@ -501,7 +502,8 @@ namespace VIS.Helpers
                             INNER JOIN ASI03_Product p on p.ASI03_Product_ID = trns.ASI03_Product_ID
                             INNER JOIN ASI03_Storage fs on fs.ASI03_Storage_ID = trns.ASI03_FromStorage
                             INNER JOIN ASI03_Storage ts on ts.ASI03_Storage_ID = trns.ASI03_ToStorage
-                            INNER JOIN C_UOM u on u.C_UOM_ID = trns.C_UOM_ID";
+                            INNER JOIN C_UOM u on u.C_UOM_ID = trns.C_UOM_ID
+                            ORDER BY trns.ASI03_ProductTransaction_ID DESC";
             string _sqlCount = @"select COUNT(ASI03_ProductTransaction_ID) from ASI03_ProductTransaction";
             var dr = DB.ExecuteReader(_sql);
             if (dr != null)
