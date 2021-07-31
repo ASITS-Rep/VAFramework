@@ -102,6 +102,10 @@
       <HintPath>..\ViennaAdvantageWeb\Dll\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ModelLibrary, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ModelLibrary\bin\Debug\ModelLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -938,6 +942,11 @@
     <Compile Include="Areas\VIS\Models\InfoWindowModel.cs" />
     <Compile Include="Areas\VIS\Models\LocationModel.cs" />
     <Compile Include="Areas\VIS\Models\LocatorModel.cs" />
+    <Compile Include="Areas\VIS\Models\MASI03Product.cs" />
+    <Compile Include="Areas\VIS\Models\MASI03ProductTransaction.cs" />
+    <Compile Include="Areas\VIS\Models\MASI03Storage.cs" />
+    <Compile Include="Areas\VIS\Models\MASI03Warehouse.cs" />
+    <Compile Include="Areas\VIS\Models\MASI03WarehouseProducts.cs" />
     <Compile Include="Areas\VIS\Models\MChart.cs" />
     <Compile Include="Areas\VIS\Models\PAttributesModel.cs" />
     <Compile Include="Areas\VIS\Models\PaymentAllocation.cs" />
@@ -965,6 +974,11 @@
     <Compile Include="Areas\VIS\Models\VTreeMaintenance.cs" />
     <Compile Include="Areas\VIS\Models\VTrxMaterialModel.cs" />
     <Compile Include="Areas\VIS\Models\WFActivityModel.cs" />
+    <Compile Include="Areas\VIS\Models\X_ASI03_Product.cs" />
+    <Compile Include="Areas\VIS\Models\X_ASI03_ProductTransaction.cs" />
+    <Compile Include="Areas\VIS\Models\X_ASI03_Storage.cs" />
+    <Compile Include="Areas\VIS\Models\X_ASI03_Warehouse.cs" />
+    <Compile Include="Areas\VIS\Models\X_ASI03_WarehouseProducts.cs" />
     <Compile Include="Areas\VIS\VISAreaRegistration.cs" />
     <Compile Include="Areas\VIS\WebPages\CreateUser.aspx.cs">
       <DependentUpon>CreateUser.aspx</DependentUpon>
@@ -1049,12 +1063,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">
-      <Project>{f8f980fc-83ef-4495-812e-5def569b9242}</Project>
-      <Name>ModelLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

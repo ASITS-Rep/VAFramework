@@ -1573,7 +1573,7 @@
                     $hAlrtTxtTypeCount.text(tabdataLastPage);
                     if (isTabAjaxBusy == false) {
                         tabdatapcount = 0, tabdataPageSize = 10, tabdataPage = 1, tabdatacntpage = 0;
-                        emptyWelcomeTabDatacontainers();;
+                        emptyWelcomeTabDatacontainers();
                         LoadHomeNotice();
                     }
                     $workflowActivity.hide();

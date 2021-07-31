@@ -91,7 +91,7 @@
 }
 
 
-#welcomeScreen, #fllupsScreen, #favLinks, #workflowActivity {
+#welcomeScreen, #fllupsScreen, #favLinks, #workflowActivity, #products-screen {
     position: absolute;
     top: 10px;
     bottom: 0px;
@@ -2642,7 +2642,7 @@ ul.vis-userFavourites-ListMenu li a i {
     top: auto !important;
 }
 
-#welcomeScreen, #fllupsScreen, #favLinks, #workflowActivity {
+#welcomeScreen, #fllupsScreen, #favLinks, #workflowActivity, #products-screen {
     transition: all 0.5s;
 }
 
@@ -3192,3 +3192,139 @@ ul.vis-userLinks-ListMenu li a i {
     margin-left: -1px;
     border: 1px solid rgba(var(--v-c-on-secondary), .2);
 }
+
+#products-screen {
+    right: 0;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+.products {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-right: 2rem;
+}
+
+    .products .prod-cont {
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-content: start;
+        box-sizing: border-box;
+        width: 46%;
+        margin: 0.5rem;
+    }
+
+.prod-image-cont {
+    width: 100%;
+    border-radius: 1rem;
+    height: 8rem;
+    box-sizing: border-box;
+}
+
+    .prod-image-cont img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+.product-details {
+    width: 100%;
+    border-radius: 1rem;
+    flex: auto;
+}
+
+#prod_trns {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    width: 48%;
+    height: 100%;
+}
+
+.trns_action_cont,
+.trns_select_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    width: 100%;
+}
+
+.trns_select_cont div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.field-3 {
+    margin: 0 0.5rem;
+    width: 28%;
+}
+
+field-2 {
+    margin: 0 0.5rem;
+    width: 42%;
+}
+
+.transactions_list_cont,
+.transaction_record {
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: start;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.transactions_list_cont {
+    height: 62%;
+    margin: 0.5rem;
+    overflow: auto;
+}
+
+.transaction_record {
+    height: 20%;
+    margin: 0.5rem 0;
+}
+
+.product_detail,
+.storage_details {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.from_storage_text {
+    color: red;
+}
+
+.to_storage_text {
+    color: green;
+}
+
+.trns_btn_cont {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   margin: 0.5rem;
+}
+
+    .trns_btn_cont .add_btn {
+        background-color: blue;
+
+    }

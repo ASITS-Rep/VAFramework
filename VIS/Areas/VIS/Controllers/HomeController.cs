@@ -510,6 +510,84 @@ namespace VIS.Controllers
         //    return View();
         //}
 
+        #region Home Products
+        public JsonResult GetJSONProducts()
+        {
+            ProductsInfo productsInfo = null;
+            objHomeHelp = new HomeHelper();
+            if (Session["ctx"] != null)
+            {
+                Ctx ct = Session["ctx"] as Ctx;
+                productsInfo = objHomeHelp.getHomeProducts(ct);
+            }
+            return Json(JsonConvert.SerializeObject(productsInfo), JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region ProductsTransactions
+        public JsonResult GetProductsTrns()
+        {
+            ProductsTrnsInfo homeProductsTrns = null;
+            string error = "";
+            if (Session["ctx"] != null)
+            {
+                objHomeHelp = new HomeHelper();
+                Ctx ct = Session["ctx"] as Ctx;
+                homeProductsTrns = objHomeHelp.GetProductsTrns(ct);
+            }
+            else
+            {
+                error = "Session Expired";
+            };
+            return Json(new { data = JsonConvert.SerializeObject(homeProductsTrns), error = error }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region Transaction Required Lists 
+        public JsonResult GetSelectLists()
+        {
+            HomeSelectLists homeSelectLists = null;
+            string error = "";
+            if (Session["ctx"] != null)
+            {
+                objHomeHelp = new HomeHelper();
+                Ctx ct = Session["ctx"] as Ctx;
+                homeSelectLists = objHomeHelp.GetSelectLists(ct);
+            }
+            else
+            {
+                error = "Session Expiered";
+            };
+            return Json(new { data = JsonConvert.SerializeObject(homeSelectLists), error = error }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region Add Transaction
+        public bool AddTrns(int prodId, int amount, int fromStorage, int toStorage, int unitId)
+        {
+            if (Session["ctx"] != null)
+            {
+                Ctx ctx = Session["ctx"] as Ctx;
+                MASI03ProductTransaction trns = new MASI03ProductTransaction(ctx, 0, null);
+                trns.SetASI03_Product_ID(prodId);
+                trns.SetASI03_ProductAmount(amount);
+                trns.SetC_UOM_ID(unitId);
+                trns.SetASI03_FromStorage(fromStorage);
+                trns.SetASI03_ToStorage(toStorage);
+                if (!trns.Save())
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            };
+            
+        }
+        #endregion
+
 
         #region Follups start
         /*----------------Folloups Strat-----------------------*/
