@@ -93,6 +93,7 @@ namespace VIS
                 "~/Areas/VIS/Scripts/app/Framework/appointments.js",
                 "~/Areas/VIS/Scripts/app/Framework/vpayment.js",
                 "~/Areas/VIS/Scripts/app/forms/form.js",
+                "~/Areas/VIS/Scripts/app/forms/foodTransactions.js",
                 "~/Areas/VIS/Scripts/app/forms/vcreatefrom.js",
                 "~/Areas/VIS/Scripts/app/forms/vcreatefrominvoice.js",
                 "~/Areas/VIS/Scripts/app/forms/vcreatefromshipment.js",
