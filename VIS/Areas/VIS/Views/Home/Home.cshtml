@@ -126,7 +126,6 @@
             datatype: 'json',
             success: function (result) {
                 data = JSON.parse(result.data)
-                console.log(data)
                 let productTrns = data.listProductsTrns;
                 if (productTrns.length > 0) {
                     productTrns.forEach(productTrn => $("#transactions_list").append('<div id="' + productTrn.ASI03_ProductTransaction_ID + '" class="transaction_record"><div class="product_details"><p class="d-inline text-center">' + productTrn.ASI03_ProductAmount + ' ' + productTrn.Unit + '</p> &nbsp; <p class="d-inline text-center">' + productTrn.ProductName + '</p></div><div class="storage_details"><p class="from_storage_text d-inline text-center">' + productTrn.FromStorageName + '</p>&#8594;<p class="to_storage_text d-inline text-center">' + productTrn.ToStorageName + '</p></div></div>'));
@@ -145,7 +144,6 @@
             datatype: 'json',
             success: function (result) {
                 data = JSON.parse(result.data)
-                console.log(data)
                 let productsList = data.ProductsLists;
                 let unitsList = data.UnitsLists;
                 let storageList = data.FromStorageLists;
@@ -186,7 +184,6 @@
                     dataType: 'html',
                     data: data,
                     success: function (result) {
-                        console.log(result)
                         document.location.reload()
                     },
                     error: function (ex) {
