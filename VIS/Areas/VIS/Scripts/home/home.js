@@ -543,7 +543,7 @@
                         else if (activeTabType == NoticeType) {
                             tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
                             emptyWelcomeTabDatacontainers();;
-                            LoadProductsTrns();
+                            LoadHomeNotice();
                         }
                         else if (activeTabType == MyTaskType) {
                             tabdatapcount = 0, tabdataPageSize = p_size, tabdataPage = p_no, tabdatacntpage = 0;
@@ -747,7 +747,7 @@
                                 tabdatacntpage = tabdataPage * tabdataPageSize;
                                 tabdataPage += 1;
                                 if (tabdatacntpage <= tabdataLastPage) {
-                                    LoadProductsTrns();
+                                    LoadHomeNotice();
                                 }
                                 else {
                                     return;
@@ -1306,8 +1306,6 @@
         }
         /* End Request */
 
-        
-
         /* Start  Notice */
         function LoadHomeNotice() {
             isTabAjaxBusy = true;
@@ -1567,7 +1565,7 @@
                     $('.vis-welcomeScreen-Data').hide('slow');
                     $('.vis-welcomeScreenFeeds').fadeIn('fast');
                    
-                    $sAlrtTxtType.html(VIS.Msg.getMsg("Transactions"));
+                    $sAlrtTxtType.html(VIS.Msg.getMsg("Notice"));
                     $welcomeNewRecord.hide();
                     $wfSearchShow.hide();
                     tabdataLastPage = parseInt($divNoticeCount.text());
@@ -1576,7 +1574,7 @@
                     if (isTabAjaxBusy == false) {
                         tabdatapcount = 0, tabdataPageSize = 10, tabdataPage = 1, tabdatacntpage = 0;
                         emptyWelcomeTabDatacontainers();
-                        LoadProductsTrns();
+                        LoadHomeNotice();
                     }
                     $workflowActivity.hide();
                     adjustDivSize();
